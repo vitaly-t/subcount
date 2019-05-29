@@ -64,4 +64,9 @@ sub.unsubscribe();
 countSub.unsubscribe();
 ```
 
+## Extras 
+
+* If you need to wait for `next` to finish, use method `nextSync` instead.
+* If you need `onCount` sent synchronously, use `new CountedObservable({sync: true})` 
+
 [RXJS]:https://github.com/reactivex/rxjs

@@ -88,12 +88,15 @@ export class CountedObservable<T = any> extends Observable<T> {
     /**
      * Constructor.
      *
-     * @param {boolean} [sync=false]
+     * @param {} [options]
+     *
+     * @param {boolean} [options.sync=false]
      * Makes onCount calls synchronous.
      */
-    constructor(sync: boolean = false) {
+    constructor(options?: { sync?: boolean }) {
         super();
         const c = this.onCount;
+        const sync = options && options.sync;
         this.send = (sync ? c.nextSync : c.next).bind(c);
     }
 
