@@ -1,4 +1,4 @@
-# subs-count
+# subscount
 
 [![Build Status](https://travis-ci.org/vitaly-t/subcount.svg?branch=master)](https://travis-ci.org/vitaly-t/subcount)
 
@@ -14,7 +14,7 @@ See the [following issue](https://stackoverflow.com/questions/56195932/how-to-mo
 
 ## Usage
 
-You can either install this module via `npm i subs-count`, or just copy [./src/subcount.ts](./src/subcount.ts) into your project.
+You can either install this module via `npm i subcount`, or just copy [./src/subcount.ts](./src/subcount.ts) into your project.
 
 ### Simple Observable
 
