@@ -36,11 +36,11 @@ a.next('hello'); // send data
 sub.unsubscribe(); // unsubscribe
 ```
 
-If you need to wait for `next` to finish, you can use method `nextSync` instead.
+And if you need to wait for `next` to finish, you can use method `nextSync` instead.
 
 ### Counted Observable
 
-Class [CountedObservable] simply extends [Observable] with `onCount`:
+Class [CountedObservable] extends [Observable] with `onCount`, to monitor the subscriptions counter:
 
 ```ts
 import {CountedObservable, ISubCounts} from 'subcount';
@@ -48,7 +48,7 @@ import {CountedObservable, ISubCounts} from 'subcount';
 // declare observable with any type:
 const a: CountedObservable<string> = new CountedObservable();
 
-// subscribe for the subscriptions counter:
+// monitor the subscriptions counter:
 const countSub = a.onCount.subscribe((info: ISubCounts) => {
     // info = {newCount, prevCount} 
 });
