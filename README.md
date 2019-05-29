@@ -1,5 +1,7 @@
 # subs-count
 
+[![Build Status](https://travis-ci.org/vitaly-t/subs-count.svg?branch=master)](https://travis-ci.org/vitaly-t/subs-count)
+
 Simple event subscription module, with support for subscription counter out of the box. 
 
 Written in pure TypeScript, and strictly for Node.js
