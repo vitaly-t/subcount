@@ -1,6 +1,6 @@
 {
   "name": "subs-count",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Simple observable with subscriptions counter.",
   "main": "dist/src/subs-count.js",
   "types": "dist/src/subs-count.d.ts",
