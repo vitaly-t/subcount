@@ -1,15 +1,18 @@
 {
   "name": "subs-count",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Simple subscriptions with counter.",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
   "homepage": "https://github.com/vitaly-t/subs-count",
   "scripts": {
     "all": "tsc && npm test && npm run lint",
     "test": "mocha -r ts-node/register test/**/*.spec.ts",
     "lint": "./node_modules/.bin/tslint --fix ./src/**/*.ts ./test/**/*.ts"
   },
+  "files": [
+    "dist/src"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vitaly-t/subs-count.git"
