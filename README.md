@@ -1,4 +1,4 @@
-# subscount
+# subcount
 
 [![Build Status](https://travis-ci.org/vitaly-t/subcount.svg?branch=master)](https://travis-ci.org/vitaly-t/subcount)
 
@@ -41,13 +41,13 @@ sub.unsubscribe();
 ### Counted Observable
 
 ```ts
-import {CountedObservable, ISubsCount} from 'subcount';
+import {CountedObservable, ISubCounts} from 'subcount';
 
 // declare observable with any type:
 const a: CountedObservable<string> = new CountedObservable();
 
 // subscribe for the subscriptions counter:
-const countSub = a.onCount.subscribe((info: ISubsCount) => {
+const countSub = a.onCount.subscribe((info: ISubCounts) => {
     // info = {newCount, prevCount} 
 });
 

@@ -69,7 +69,7 @@ export class Observable<T = any> {
     }
 }
 
-export interface ISubsCount {
+export interface ISubCounts {
     newCount: number;
     prevCount: number;
 }
@@ -83,7 +83,7 @@ export class CountedObservable<T = any> extends Observable<T> {
     /**
      * Event onCount(({newCount, prevCount})=>void)
      */
-    readonly onCount: Observable<ISubsCount> = new Observable();
+    readonly onCount: Observable<ISubCounts> = new Observable();
 
     /**
      * Constructor.

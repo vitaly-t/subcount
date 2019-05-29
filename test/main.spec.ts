@@ -1,5 +1,5 @@
 import {expect, chai} from './';
-import {CountedObservable, ISubsCount, Observable} from '../src/subcount';
+import {CountedObservable, ISubCounts, Observable} from '../src/subcount';
 
 describe('Observable', () => {
     it('must notify about subscriptions', () => {
@@ -18,7 +18,7 @@ describe('Observable', () => {
 describe('CountedObservable', () => {
     it('must notify about the count', () => {
         const a = new CountedObservable<string>({sync: true});
-        const cb = (data: ISubsCount) => {
+        const cb = (data: ISubCounts) => {
         };
         const s = chai.spy(cb);
         a.onCount.subscribe(s);
