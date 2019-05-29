@@ -1,12 +1,12 @@
 {
   "name": "subs-count",
-  "version": "0.0.4",
-  "description": "Simple subscriptions with counter.",
+  "version": "0.0.5",
+  "description": "Simple observable with subscriptions counter.",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "homepage": "https://github.com/vitaly-t/subs-count",
   "scripts": {
-    "all": "tsc && npm test && npm run lint",
+    "build": "tsc && npm test && npm run lint",
     "test": "mocha -r ts-node/register test/**/*.spec.ts",
     "lint": "./node_modules/.bin/tslint --fix ./src/**/*.ts ./test/**/*.ts"
   },
@@ -29,11 +29,16 @@
   "bugs": {
     "url": "https://github.com/vitaly-t/subs-count/issues"
   },
+  "keywords": [
+    "observable",
+    "subscription",
+    "counter"
+  ],
   "devDependencies": {
     "@types/chai": "4.1.7",
     "@types/chai-spies": "1.0.0",
     "@types/mocha": "5.2.6",
-    "@types/node": "12.0.2",
+    "@types/node": "12.0.3",
     "chai": "4.2.0",
     "chai-spies": "1.0.0",
     "mocha": "6.1.4",
