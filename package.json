@@ -1,6 +1,6 @@
 {
   "name": "subs-count",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Simple subscriptions with counter.",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
