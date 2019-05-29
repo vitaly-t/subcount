@@ -1,5 +1,5 @@
 import {expect, chai} from './';
-import {CountedObservable, ISubsCount, Observable} from '../src/index';
+import {CountedObservable, ISubsCount, Observable} from '../src/subs-count';
 
 describe('Observable', () => {
     it('must notify about subscriptions', () => {
@@ -8,7 +8,7 @@ describe('Observable', () => {
         };
         const s = chai.spy(cb);
         a.subscribe(s);
-        a.next(123, count => {
+        a.next(123, (count: number) => {
             expect(count).to.be.equal(1);
             expect(s).to.have.been.called.with(123);
         });

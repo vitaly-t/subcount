@@ -14,11 +14,11 @@ See the [following issue](https://stackoverflow.com/questions/56195932/how-to-mo
 
 ## Usage
 
-You can either install this module via `npm i subs-count`, or just copy [./src/index.ts](./src/index.ts) into your project.
+You can either install this module via `npm i subs-count`, or just copy [./src/subs-count.ts](./src/subs-count.ts) into your project.
 
 ### Simple Observable
 
-This works the same as with [RXJS]:
+This works very similar to [RXJS]:
 
 ```ts
 import {Observable} from 'subs-count';
@@ -26,7 +26,7 @@ import {Observable} from 'subs-count';
 // declare observable with any type:
 const a: Observable<string> = new Observable();
 
-// subscribe for events:
+// subscribe for data:
 const sub = a.subscribe((data: string) => {
   // data = 'hello'
 });
@@ -46,12 +46,12 @@ import {CountedObservable, ISubsCount} from 'subs-count';
 // declare observable with any type:
 const a: CountedObservable<string> = new CountedObservable();
 
-// subscribe to the subscriptions counter:
+// subscribe for the subscriptions counter:
 const countSub = a.onCount.subscribe((info: ISubsCount) => {
     // info = {newCount, prevCount} 
 });
 
-// subscribe for events:
+// subscribe for data:
 const sub = a.subscribe((data: string) => {
   // data = 'hello'
 });

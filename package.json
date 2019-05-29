@@ -2,8 +2,8 @@
   "name": "subs-count",
   "version": "0.0.6",
   "description": "Simple observable with subscriptions counter.",
-  "main": "dist/src/index.js",
-  "types": "dist/src/index.d.ts",
+  "main": "dist/src/subs-count.js",
+  "types": "dist/src/subs-count.d.ts",
   "homepage": "https://github.com/vitaly-t/subs-count",
   "scripts": {
     "build": "tsc && npm test && npm run lint",
