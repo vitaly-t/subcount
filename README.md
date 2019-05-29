@@ -39,13 +39,13 @@ sub.unsubscribe();
 ### Counted Subscriptions
 
 ```ts
-import {CountedObservable, ISubCounts} from 'subs-count';
+import {CountedObservable, ISubsCount} from 'subs-count';
 
 // declare observable with any type:
 const a: CountedObservable<string> = new CountedObservable();
 
-// subscribe to subscriptions counter:
-const cSub = a.onCount.subscribe((info: ISubCounts) => {
+// subscribe to the counter of subscriptions:
+const countSub = a.onCount.subscribe((info: ISubsCount) => {
     // info = {newCount, prevCount} 
 });
 
@@ -57,8 +57,9 @@ const sub = a.subscrtibe((data: string) => {
 // send data:
 a.next('hello');
 
-// unsubscribe:
+// unsubscribing:
 sub.unsubscribe();
+countSub.unsubscribe();
 ```
 
 [RXJS]:https://github.com/reactivex/rxjs
