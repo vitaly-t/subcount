@@ -4,7 +4,7 @@
 
 Simple observable, with support for subscriptions counter out of the box. 
 
-Written in TypeScript, and strictly for Node.js
+Written in TypeScript, for Node.js v6 and later.
 
 ## Rationale
 
