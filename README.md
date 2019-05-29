@@ -2,13 +2,13 @@
 
 [![Build Status](https://travis-ci.org/vitaly-t/subcount.svg?branch=master)](https://travis-ci.org/vitaly-t/subcount)
 
-Simple observable, with support for subscriptions counter out of the box. 
+Simplified observable, with support for subscriptions + counter out of the box. 
 
 Written in TypeScript, for Node.js v6 and later.
 
 ## Rationale
 
-This module was written to avoid the overhead of [RXJS] when it comes to subscriptions with counters.
+This module was written to avoid the overhead of [RXJS] when all you need is subscriptions + counters.
 
 See the [following issue](https://stackoverflow.com/questions/56195932/how-to-monitor-number-of-rxjs-subscriptions) that precipitated this.
 
@@ -18,7 +18,7 @@ You can either install this module via `npm i subcount`, or just copy [./src/sub
 
 ### Simple Observable
 
-Class [Observable] works just like in [RXJS]:
+Class [Observable] works very much like in [RXJS]: 
 
 ```ts
 import {Observable} from 'subcount';
@@ -31,11 +31,9 @@ const sub = a.subscribe((data: string) => {
   // data = 'hello'
 });
 
-// send data:
-a.next('hello');
+a.next('hello'); // send data
 
-// unsubscribe:
-sub.unsubscribe();
+sub.unsubscribe(); // unsubscribe
 ```
 
 If you need to wait for `next` to finish, you can use method `nextSync` instead.
