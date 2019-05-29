@@ -1,6 +1,6 @@
 # subs-count
 
-[![Build Status](https://travis-ci.org/vitaly-t/subs-count.svg?branch=master)](https://travis-ci.org/vitaly-t/subs-count)
+[![Build Status](https://travis-ci.org/vitaly-t/subcount.svg?branch=master)](https://travis-ci.org/vitaly-t/subcount)
 
 Simple observable, with support for subscriptions counter out of the box. 
 
@@ -14,14 +14,14 @@ See the [following issue](https://stackoverflow.com/questions/56195932/how-to-mo
 
 ## Usage
 
-You can either install this module via `npm i subs-count`, or just copy [./src/subs-count.ts](./src/subs-count.ts) into your project.
+You can either install this module via `npm i subs-count`, or just copy [./src/subcount.ts](./src/subcount.ts) into your project.
 
 ### Simple Observable
 
 This works very similar to [RXJS]:
 
 ```ts
-import {Observable} from 'subs-count';
+import {Observable} from 'subcount';
 
 // declare observable with any type:
 const a: Observable<string> = new Observable();
@@ -41,7 +41,7 @@ sub.unsubscribe();
 ### Counted Observable
 
 ```ts
-import {CountedObservable, ISubsCount} from 'subs-count';
+import {CountedObservable, ISubsCount} from 'subcount';
 
 // declare observable with any type:
 const a: CountedObservable<string> = new CountedObservable();

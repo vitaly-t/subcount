@@ -1,10 +1,10 @@
 {
-  "name": "subs-count",
-  "version": "0.0.7",
+  "name": "subcount",
+  "version": "0.0.8",
   "description": "Simple observable with subscriptions counter.",
-  "main": "dist/src/subs-count.js",
-  "types": "dist/src/subs-count.d.ts",
-  "homepage": "https://github.com/vitaly-t/subs-count",
+  "main": "dist/src/subcount.js",
+  "types": "dist/src/subcount.d.ts",
+  "homepage": "https://github.com/vitaly-t/subcount",
   "scripts": {
     "build": "tsc && npm test && npm run lint",
     "test": "mocha -r ts-node/register test/**/*.spec.ts",
@@ -15,7 +15,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vitaly-t/subs-count.git"
+    "url": "git+https://github.com/vitaly-t/subcount.git"
   },
   "author": {
     "name": "Vitaly Tomilov",
@@ -27,7 +27,7 @@
     "npm": ">=2.15"
   },
   "bugs": {
-    "url": "https://github.com/vitaly-t/subs-count/issues"
+    "url": "https://github.com/vitaly-t/subcount/issues"
   },
   "keywords": [
     "observable",
