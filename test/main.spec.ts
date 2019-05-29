@@ -1,5 +1,5 @@
 import {expect, chai} from './';
-import {CountedObservable, Observable} from '../src';
+import {CountedObservable, Observable} from '../src/index';
 
 describe('Observable', () => {
     it('must persist the type through subscription', () => {
@@ -18,7 +18,7 @@ describe('Observable', () => {
 describe('CountedObservable', () => {
     it('must notify about subscriptions', () => {
         const a = new CountedObservable<string>(true);
-        const cb = count => {
+        const cb = () => {
         };
         const s = chai.spy(cb);
         a.onCount.subscribe(s);

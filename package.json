@@ -2,8 +2,8 @@
   "name": "subs-count",
   "version": "0.0.1",
   "description": "Simple subscriptions with counter.",
-  "main": "src/index.js",
-  "types": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "homepage": "https://github.com/vitaly-t/subs-count",
   "scripts": {
     "all": "tsc && npm test && npm run lint",

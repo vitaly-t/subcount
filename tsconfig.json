@@ -1,9 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es2015",
+    "declaration": true,
+    "declarationDir": "./dist",
+    "esModuleInterop": true,
     "module": "commonjs",
-    "moduleResolution": "node",
-    "esModuleInterop": true
+    "noImplicitAny": true,
+    "outDir": "./dist",
+    "target": "es6"
   },
   "include": [
     "src/**/*.ts",

@@ -1,6 +1,6 @@
 import chai from 'chai';
-import {describe} from 'mocha';
 import spies from 'chai-spies';
+import {describe} from 'mocha';
 
 chai.use(spies);
 

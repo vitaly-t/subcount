@@ -62,7 +62,7 @@ export class Observable<T = any> {
         return copy.length;
     }
 
-    protected createUnsub(cb) {
+    protected createUnsub(cb: (data: T) => void) {
         return () => {
             this.subs.splice(this.subs.indexOf(cb), 1);
         };
@@ -97,7 +97,7 @@ export class CountedObservable<T = any> extends Observable<T> {
         this.send = (sync ? c.nextSync : c.next).bind(c);
     }
 
-    protected createUnsub(cb) {
+    protected createUnsub(cb: (data: T) => void) {
         const s = this.subs;
         this.send({newCount: s.length, prevCount: s.length - 1});
         return () => {
