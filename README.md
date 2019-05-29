@@ -2,13 +2,13 @@
 
 [![Build Status](https://travis-ci.org/vitaly-t/subs-count.svg?branch=master)](https://travis-ci.org/vitaly-t/subs-count)
 
-Simple event subscription module, with support for subscription counter out of the box. 
+Simple observable, with support for subscription counter out of the box. 
 
 Written in pure TypeScript, and strictly for Node.js
 
 ## Rationale
 
-This module was written to avoid the overhead of [RXJS] when it comes to simple subscriptions and their counters.
+This module was written to avoid the overhead of [RXJS] when it comes to simple subscriptions with counters.
 
 See the [following issue](https://stackoverflow.com/questions/56195932/how-to-monitor-number-of-rxjs-subscriptions) that precipitated this.
 
@@ -16,9 +16,9 @@ See the [following issue](https://stackoverflow.com/questions/56195932/how-to-mo
 
 You can either install this module via `npm i subs-count`, or just copy [./src/index.ts](./src/index.ts) into your project.
 
-### Simple Subscriptions
+### Simple Observable
 
-These work the same as with [RXJS]:
+This works the same as with [RXJS]:
 
 ```ts
 import {Observable} from 'subs-count';
@@ -38,7 +38,7 @@ a.next('hello');
 sub.unsubscribe();
 ```
 
-### Counted Subscriptions
+### Counted Observable
 
 ```ts
 import {CountedObservable, ISubsCount} from 'subs-count';
@@ -46,7 +46,7 @@ import {CountedObservable, ISubsCount} from 'subs-count';
 // declare observable with any type:
 const a: CountedObservable<string> = new CountedObservable();
 
-// subscribe to the counter of subscriptions:
+// subscribe to the subscriptions counter:
 const countSub = a.onCount.subscribe((info: ISubsCount) => {
     // info = {newCount, prevCount} 
 });
@@ -59,7 +59,7 @@ const sub = a.subscrtibe((data: string) => {
 // send data:
 a.next('hello');
 
-// unsubscribing:
+// unsubscribe:
 sub.unsubscribe();
 countSub.unsubscribe();
 ```
