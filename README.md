@@ -26,7 +26,7 @@ import {Observable} from 'subs-count';
 // declare observable with any type:
 const a: Observable<string> = new Observable();
 
-// subscribe for the events:
+// subscribe for events:
 const sub = a.subscrtibe((data: string) => {
   // data = 'hello'
 });
@@ -51,7 +51,7 @@ const countSub = a.onCount.subscribe((info: ISubsCount) => {
     // info = {newCount, prevCount} 
 });
 
-// subscribe for the events:
+// subscribe for events:
 const sub = a.subscrtibe((data: string) => {
   // data = 'hello'
 });
