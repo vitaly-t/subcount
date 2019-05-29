@@ -2,9 +2,9 @@
 
 [![Build Status](https://travis-ci.org/vitaly-t/subs-count.svg?branch=master)](https://travis-ci.org/vitaly-t/subs-count)
 
-Simple observable, with support for subscription counter out of the box. 
+Simple observable, with support for subscriptions counter out of the box. 
 
-Written in pure TypeScript, and strictly for Node.js
+Written in TypeScript, and strictly for Node.js
 
 ## Rationale
 
@@ -27,7 +27,7 @@ import {Observable} from 'subs-count';
 const a: Observable<string> = new Observable();
 
 // subscribe for events:
-const sub = a.subscrtibe((data: string) => {
+const sub = a.subscribe((data: string) => {
   // data = 'hello'
 });
 
@@ -52,7 +52,7 @@ const countSub = a.onCount.subscribe((info: ISubsCount) => {
 });
 
 // subscribe for events:
-const sub = a.subscrtibe((data: string) => {
+const sub = a.subscribe((data: string) => {
   // data = 'hello'
 });
 
