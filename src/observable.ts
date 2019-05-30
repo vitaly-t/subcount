@@ -6,7 +6,22 @@ import {Subscription} from './subscription';
  * Basic implementation of subscribing to events and triggering them.
  */
 export class Observable<T = any> {
+    readonly max: number;
     protected subs: ((data: T) => void)[] = [];
+
+    /**
+     * @constructor
+     *
+     * @param {} [options]
+     * Configuration options.
+     *
+     * @param {number} [options.max = 0]
+     * Maximum number of subscribers that can receive data.
+     * Default is 0, meaning "no limit applies"
+     */
+    constructor(options?: { max?: number }) {
+        this.max = (options && options.max > 0) ? options.max : 0;
+    }
 
     public subscribe(cb: (data: T) => void): Subscription {
         this.subs.push(cb);
@@ -27,14 +42,14 @@ export class Observable<T = any> {
      * Number of clients that will be receiving the data.
      */
     public next(data: T, cb?: (count: number) => void): number {
-        const copy = [...this.subs];
-        copy.forEach((a, index) => nextCall(() => {
+        const r = this.getRecipients();
+        r.forEach((a, index) => nextCall(() => {
             a(data);
-            if (index === copy.length - 1 && typeof cb === 'function') {
-                cb(copy.length); // finished sending
+            if (index === r.length - 1 && typeof cb === 'function') {
+                cb(r.length); // finished sending
             }
         }));
-        return copy.length;
+        return r.length;
     }
 
     /**
@@ -47,9 +62,14 @@ export class Observable<T = any> {
      * Number of clients that received the data.
      */
     public nextSync(data: T): number {
-        const copy = [...this.subs];
-        copy.forEach(a => a(data));
-        return copy.length;
+        const r = this.getRecipients();
+        r.forEach(a => a(data));
+        return r.length;
+    }
+
+    private getRecipients(): ((data: T) => void)[] {
+        const end = this.max ? this.max : this.subs.length;
+        return this.subs.slice(0, end);
     }
 
     protected createUnsub(cb: (data: T) => void) {
