@@ -69,5 +69,5 @@ countSub.unsubscribe();
 If you need `onCount` sent synchronously, use `new CountedObservable({sync: true})`. 
 
 [RXJS]:https://github.com/reactivex/rxjs
-[Observable]:https://github.com/vitaly-t/subcount/blob/master/src/subcount.ts#L16
-[CountedObservable]:https://github.com/vitaly-t/subcount/blob/master/src/subcount.ts#L80
+[Observable]:https://github.com/vitaly-t/subcount/blob/master/src/observable.ts
+[CountedObservable]:https://github.com/vitaly-t/subcount/blob/master/src/counts.ts
