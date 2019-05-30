@@ -80,10 +80,23 @@ Including `./subcount/dist` in your HTML will give you access to all types under
 </script>
 ``` 
 
-This will work in all browsers, including ones as ancient as IE9.
+This will work in all browsers, including ones as old as IE9.
 
 And when using it directly in TypeScript, you can compile and bundle it any way you want.
 
+**Example:**
+
+```ts
+function fromEvent(from: Node, event: string): Observable<Event> {
+    const obs = new Observable<Event>();
+    from.addEventListener(event, e => obs.next(e));
+    return obs;
+}
+
+fromEvent(document, 'click').subscribe((e: Event) => {
+    // handle the event
+});
+```
 
 [RXJS]:https://github.com/reactivex/rxjs
 [Observable]:https://github.com/vitaly-t/subcount/blob/master/src/observable.ts
