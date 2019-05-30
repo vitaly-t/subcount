@@ -6,7 +6,9 @@ export interface ISubCounts {
 }
 
 /**
- * Observable, with support for the subscription count monitoring.
+ * @class CountedObservable
+ * @description
+ * Extends Observable with onCount event to monitor subscriptions count.
  */
 export class CountedObservable<T = any> extends Observable<T> {
     protected send: (data: any) => number;
@@ -17,7 +19,7 @@ export class CountedObservable<T = any> extends Observable<T> {
     readonly onCount: Observable<ISubCounts> = new Observable();
 
     /**
-     * Constructor.
+     * @constructor
      *
      * @param {} [options]
      *

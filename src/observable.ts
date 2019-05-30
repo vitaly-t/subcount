@@ -1,5 +1,10 @@
 import {Subscription} from './subscription';
 
+/**
+ * @class Observable
+ * @description
+ * Basic implementation of subscribing to events and triggering them.
+ */
 export class Observable<T = any> {
     protected subs: ((data: T) => void)[] = [];
 
@@ -9,16 +14,14 @@ export class Observable<T = any> {
     }
 
     /**
-     * Asynchronous data broadcast, in a separate processor tick
-     * for each recipient.
+     * Asynchronous data broadcast, in a separate processor tick for each recipient.
      *
      * @param data
      * Data to be sent, according to the type template.
      *
      * @param {Function} [cb]
-     * Optional callback function to be notified when the last
-     * recipient has received the data. The function takes one
-     * parameter - total number of clients that received the data.
+     * Optional callback function to be notified when the last recipient has received the data.
+     * The function takes one parameter - total number of clients that received the data.
      *
      * @returns {number}
      * Number of clients that will be receiving the data.

@@ -4,11 +4,9 @@
 
 Simplified observable, with support for subscriptions + counter out of the box. 
 
-Written in TypeScript, for Node.js v6 and modern browsers.
-
 ## Rationale
 
-This module was written to avoid the overhead of [RXJS] when all you need is subscriptions + counters.
+This module was written to avoid the overhead of [RXJS] when all you need is basic subscriptions + counters.
 
 See the [following issue](https://stackoverflow.com/questions/56195932/how-to-monitor-number-of-rxjs-subscriptions) that precipitated this.
 
@@ -81,6 +79,11 @@ Including `./subcount/dist` in your HTML will give you access to all types under
     });
 </script>
 ``` 
+
+This will work in all browsers, including ones as ancient as IE9.
+
+And when using it directly in TypeScript, you can compile and bundle it any way you want.
+
 
 [RXJS]:https://github.com/reactivex/rxjs
 [Observable]:https://github.com/vitaly-t/subcount/blob/master/src/observable.ts
