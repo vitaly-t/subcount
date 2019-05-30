@@ -1,6 +1,6 @@
 {
   "name": "subcount",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Simplified observable with subscriptions + counters.",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
@@ -40,14 +40,14 @@
   "devDependencies": {
     "@types/chai": "4.1.7",
     "@types/chai-spies": "1.0.0",
-    "@types/mocha": "5.2.6",
-    "@types/node": "12.0.3",
+    "@types/mocha": "5.2.7",
+    "@types/node": "12.0.4",
     "browserify": "16.2.3",
     "chai": "4.2.0",
     "chai-spies": "1.0.0",
     "mocha": "6.1.4",
     "ts-node": "8.2.0",
-    "tslint": "5.16.0",
+    "tslint": "5.17.0",
     "typescript": "3.5.1"
   }
 }
