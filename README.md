@@ -68,6 +68,20 @@ countSub.unsubscribe();
 
 If you need `onCount` sent synchronously, use `new CountedObservable({sync: true})`. 
 
+## Browser
+
+Including `./subcount/dist` in your HTML will give you access to all types under `subcount` namespace:
+
+```html
+<script src="./subcount/dist"></script>
+<script>
+    const a = new subcount.Observable();
+    a.subscribe(data => {
+        // data received
+    });
+</script>
+``` 
+
 [RXJS]:https://github.com/reactivex/rxjs
 [Observable]:https://github.com/vitaly-t/subcount/blob/master/src/observable.ts
 [CountedObservable]:https://github.com/vitaly-t/subcount/blob/master/src/counts.ts

@@ -1,17 +1,20 @@
 {
   "name": "subcount",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Simple observable with subscriptions counter.",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "homepage": "https://github.com/vitaly-t/subcount",
   "scripts": {
-    "all": "tsc && npm test && npm run lint",
+    "all": "npm run build && npm test && npm run lint",
+    "build": "tsc && npm run browserify",
     "test": "mocha -r ts-node/register test/**/*.spec.ts",
-    "lint": "./node_modules/.bin/tslint --fix ./src/**/*.ts ./test/**/*.ts"
+    "lint": "./node_modules/.bin/tslint --fix ./src/**/*.ts ./test/**/*.ts",
+    "browserify": "browserify dist/src/index.js -s subcount -o dist/index.js"
   },
   "files": [
-    "dist/src"
+    "dist/src",
+    "dist/index.js"
   ],
   "repository": {
     "type": "git",
@@ -39,6 +42,7 @@
     "@types/chai-spies": "1.0.0",
     "@types/mocha": "5.2.6",
     "@types/node": "12.0.3",
+    "browserify": "16.2.3",
     "chai": "4.2.0",
     "chai-spies": "1.0.0",
     "mocha": "6.1.4",
