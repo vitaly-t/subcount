@@ -16,7 +16,7 @@ export class CountedObservable<T = any> extends Observable<T> {
     /**
      * Event onCount(({newCount, prevCount})=>void)
      */
-    readonly onCount: Observable<ISubCounts> = new Observable();
+    readonly onCount: Observable<ISubCounts>;
 
     /**
      * @constructor
@@ -25,12 +25,17 @@ export class CountedObservable<T = any> extends Observable<T> {
      *
      * @param {boolean} [options.sync=false]
      * Makes onCount calls synchronous.
+     *
+     * @param {number} [options.max=0]
+     * Maximum number of subscribers that can receive data.
+     * It is passed into the parent class.
      */
-    constructor(options?: { sync?: boolean }) {
-        super();
+    constructor(options?: { sync?: boolean, max?: number }) {
+        const op = options ? options : {};
+        super({max: op.max});
+        this.onCount = new Observable();
         const c = this.onCount;
-        const sync = options && options.sync;
-        this.send = (sync ? c.nextSync : c.next).bind(c);
+        this.send = (op.sync ? c.nextSync : c.next).bind(c);
     }
 
     protected createUnsub(cb: (data: T) => void) {
