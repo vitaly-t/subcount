@@ -56,5 +56,5 @@ export class Observable<T = any> {
     }
 }
 
-// for compatibility with modern browsers:
+// for compatibility with web browsers:
 const nextCall = typeof process === 'undefined' ? setTimeout : process.nextTick;
