@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/vitaly-t/subcount.svg?branch=master)](https://travis-ci.org/vitaly-t/subcount)
 
-Simplified observable, with support for subscriptions + counter out of the box. 
+Simplified observable, with support for subscriptions + counters out of the box. 
 
 ## Rationale
 
