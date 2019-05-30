@@ -1,17 +1,4 @@
-export class Subscription {
-    private unsub: () => void;
-
-    constructor(unsub: () => void) {
-        this.unsub = unsub;
-    }
-
-    public unsubscribe(): void {
-        if (this.unsub) {
-            this.unsub();
-            this.unsub = null;
-        }
-    }
-}
+import {Subscription} from './subscription';
 
 export class Observable<T = any> {
     protected subs: ((data: T) => void)[] = [];
@@ -38,7 +25,7 @@ export class Observable<T = any> {
      */
     public next(data: T, cb?: (count: number) => void): number {
         const copy = [...this.subs];
-        copy.forEach((a, index) => process.nextTick(() => {
+        copy.forEach((a, index) => nextCall(() => {
             a(data);
             if (index === copy.length - 1 && typeof cb === 'function') {
                 cb(copy.length); // finished sending
@@ -69,43 +56,5 @@ export class Observable<T = any> {
     }
 }
 
-export interface ISubCounts {
-    newCount: number;
-    prevCount: number;
-}
-
-/**
- * Observable, with support for the subscription count monitoring.
- */
-export class CountedObservable<T = any> extends Observable<T> {
-    protected send: (data: any) => number;
-
-    /**
-     * Event onCount(({newCount, prevCount})=>void)
-     */
-    readonly onCount: Observable<ISubCounts> = new Observable();
-
-    /**
-     * Constructor.
-     *
-     * @param {} [options]
-     *
-     * @param {boolean} [options.sync=false]
-     * Makes onCount calls synchronous.
-     */
-    constructor(options?: { sync?: boolean }) {
-        super();
-        const c = this.onCount;
-        const sync = options && options.sync;
-        this.send = (sync ? c.nextSync : c.next).bind(c);
-    }
-
-    protected createUnsub(cb: (data: T) => void) {
-        const s = this.subs;
-        this.send({newCount: s.length, prevCount: s.length - 1});
-        return () => {
-            s.splice(s.indexOf(cb), 1);
-            this.send({newCount: s.length, prevCount: s.length + 1});
-        };
-    }
-}
+// for compatibility with modern browsers:
+const nextCall = typeof process === 'undefined' ? setTimeout : process.nextTick;

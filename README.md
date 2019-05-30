@@ -14,7 +14,7 @@ See the [following issue](https://stackoverflow.com/questions/56195932/how-to-mo
 
 ## Usage
 
-You can either install this module via `npm i subcount`, or just copy [./src/subcount.ts](./src/subcount.ts) into your project.
+Install this module via `npm i subcount`.
 
 ### Simple Observable
 

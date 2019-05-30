@@ -1,5 +1,5 @@
 import {expect, chai} from './';
-import {CountedObservable, ISubCounts, Observable} from '../src/subcount';
+import {CountedObservable, ISubCounts, Observable} from '../src';
 
 describe('Observable', () => {
     it('must notify about subscriptions', () => {

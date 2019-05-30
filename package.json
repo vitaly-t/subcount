@@ -1,12 +1,12 @@
 {
   "name": "subcount",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Simple observable with subscriptions counter.",
-  "main": "dist/src/subcount.js",
-  "types": "dist/src/subcount.d.ts",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
   "homepage": "https://github.com/vitaly-t/subcount",
   "scripts": {
-    "build": "tsc && npm test && npm run lint",
+    "all": "tsc && npm test && npm run lint",
     "test": "mocha -r ts-node/register test/**/*.spec.ts",
     "lint": "./node_modules/.bin/tslint --fix ./src/**/*.ts ./test/**/*.ts"
   },
@@ -44,6 +44,6 @@
     "mocha": "6.1.4",
     "ts-node": "8.2.0",
     "tslint": "5.16.0",
-    "typescript": "3.4.5"
+    "typescript": "3.5.1"
   }
 }
