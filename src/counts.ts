@@ -36,7 +36,7 @@ export class CountedObservable<T = any> extends Observable<T> {
         this.send = (options && options.sync ? c.nextSync : c.next).bind(c);
     }
 
-    protected createUnsub(cb: SubFunction<T>) {
+    protected createUnsub(cb: SubFunction<T>): () => void {
         const s = this.subs;
         this.send({newCount: s.length, prevCount: s.length - 1});
         return () => {

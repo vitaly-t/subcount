@@ -77,7 +77,7 @@ export class Observable<T = any> {
         return this.subs.slice(0, end);
     }
 
-    protected createUnsub(cb: SubFunction<T>) {
+    protected createUnsub(cb: SubFunction<T>): () => void {
         return () => {
             this.subs.splice(this.subs.indexOf(cb), 1);
         };
