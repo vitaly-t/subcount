@@ -22,7 +22,7 @@ export class Observable<T = any> {
     /**
      * @constructor
      * @param {IObservableOptions} [options]
-     * Configuration options.
+     * Configuration Options.
      */
     constructor(options?: IObservableOptions) {
         this.max = (options && options.max > 0) ? options.max : 0;
