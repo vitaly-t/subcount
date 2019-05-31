@@ -1,5 +1,15 @@
 import {Subscription} from './subscription';
 
+export interface IObservableOptions {
+    /**
+     * Maximum number of subscribers that can receive data.
+     * Default is 0, meaning "no limit applies"
+     */
+    max?: number;
+}
+
+export type SubFunction<T> = (data: T) => void;
+
 /**
  * @class Observable
  * @description
@@ -7,23 +17,18 @@ import {Subscription} from './subscription';
  */
 export class Observable<T = any> {
     readonly max: number;
-    protected subs: ((data: T) => void)[] = [];
+    protected subs: SubFunction<T>[] = [];
 
     /**
      * @constructor
-     *
-     * @param {} [options]
+     * @param {IObservableOptions} [options]
      * Configuration options.
-     *
-     * @param {number} [options.max = 0]
-     * Maximum number of subscribers that can receive data.
-     * Default is 0, meaning "no limit applies"
      */
-    constructor(options?: { max?: number }) {
+    constructor(options?: IObservableOptions) {
         this.max = (options && options.max > 0) ? options.max : 0;
     }
 
-    public subscribe(cb: (data: T) => void): Subscription {
+    public subscribe(cb: SubFunction<T>): Subscription {
         this.subs.push(cb);
         return new Subscription(this.createUnsub(cb));
     }
@@ -67,12 +72,12 @@ export class Observable<T = any> {
         return r.length;
     }
 
-    private getRecipients(): ((data: T) => void)[] {
+    private getRecipients(): SubFunction<T>[] {
         const end = this.max ? this.max : this.subs.length;
         return this.subs.slice(0, end);
     }
 
-    protected createUnsub(cb: (data: T) => void) {
+    protected createUnsub(cb: SubFunction<T>) {
         return () => {
             this.subs.splice(this.subs.indexOf(cb), 1);
         };

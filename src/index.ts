@@ -1,3 +1,3 @@
 export {Subscription} from './subscription';
-export {Observable} from './observable';
-export {CountedObservable, ISubCounts} from './counts';
+export {Observable, IObservableOptions, SubFunction} from './observable';
+export {CountedObservable, ICountedOptions, ISubCounts} from './counts';

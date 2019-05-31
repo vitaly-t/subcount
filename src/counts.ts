@@ -1,8 +1,15 @@
-import {Observable} from './observable';
+import {IObservableOptions, Observable, SubFunction} from './observable';
 
 export interface ISubCounts {
     newCount: number;
     prevCount: number;
+}
+
+export interface ICountedOptions extends IObservableOptions {
+    /**
+     * Makes onCount calls synchronous. Default is false.
+     */
+    sync?: boolean;
 }
 
 /**
@@ -20,17 +27,10 @@ export class CountedObservable<T = any> extends Observable<T> {
 
     /**
      * @constructor
-     *
-     * @param {} [options]
-     *
-     * @param {boolean} [options.sync=false]
-     * Makes onCount calls synchronous.
-     *
-     * @param {number} [options.max=0]
-     * Maximum number of subscribers that can receive data.
-     * It is passed into the parent class.
+     * @param {ICountedOptions} [options]
+     * Configuration Options.
      */
-    constructor(options?: { sync?: boolean, max?: number }) {
+    constructor(options?: ICountedOptions) {
         const op = options ? options : {};
         super({max: op.max});
         this.onCount = new Observable();
@@ -38,7 +38,7 @@ export class CountedObservable<T = any> extends Observable<T> {
         this.send = (op.sync ? c.nextSync : c.next).bind(c);
     }
 
-    protected createUnsub(cb: (data: T) => void) {
+    protected createUnsub(cb: SubFunction<T>) {
         const s = this.subs;
         this.send({newCount: s.length, prevCount: s.length - 1});
         return () => {
