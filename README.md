@@ -2,11 +2,11 @@
 
 [![Build Status](https://travis-ci.org/vitaly-t/subcount.svg?branch=master)](https://travis-ci.org/vitaly-t/subcount)
 
-Simplified observable, with support for subscriptions + counters out of the box. 
+Simplified observable, with support for event subscriptions + counters out of the box. 
 
 ## Rationale
 
-This module was written to avoid the overhead of [RXJS] when all you need is basic subscriptions + counters.
+This module was written to avoid the overhead of [RXJS] when all you need is basic event subscriptions + counters.
 
 See the [following issue](https://stackoverflow.com/questions/56195932/how-to-monitor-number-of-rxjs-subscriptions) that precipitated this.
 
@@ -97,6 +97,8 @@ fromEvent(document, 'click').subscribe((e: Event) => {
     // handle the event
 });
 ```
+
+See also - [the source code](./src), which is very small and well documented.
 
 [RXJS]:https://github.com/reactivex/rxjs
 [Observable]:https://github.com/vitaly-t/subcount/blob/master/src/observable.ts

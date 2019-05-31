@@ -1,5 +1,10 @@
 import {Subscription} from './subscription';
 
+/**
+ * @interface IObservableOptions
+ * @description
+ * Constructor options for the `Observable` class.
+ */
 export interface IObservableOptions {
     /**
      * Maximum number of subscribers that can receive data.
@@ -8,6 +13,9 @@ export interface IObservableOptions {
     max?: number;
 }
 
+/**
+ * Subscription callback function type.
+ */
 export type SubFunction<T> = (data: T) => void;
 
 /**
@@ -21,6 +29,7 @@ export class Observable<T = any> {
 
     /**
      * @constructor
+     *
      * @param {IObservableOptions} [options]
      * Configuration Options.
      */
@@ -28,18 +37,30 @@ export class Observable<T = any> {
         this.max = options && options.max > 0 ? options.max : 0;
     }
 
+    /**
+     * Subscribes for receiving data events triggered by methods `next` and `nextSync`.
+     *
+     * @param cb
+     * Data notification callback function.
+     *
+     * @returns {Subscription}
+     * Object to let unsubscribe safely.
+     */
     public subscribe(cb: SubFunction<T>): Subscription {
         this.subs.push(cb);
         return new Subscription(this.createUnsub(cb));
     }
 
     /**
-     * Asynchronous data broadcast, in a separate processor tick for each recipient.
+     * Asynchronous data broadcast to all subscribed clients.
      *
-     * @param data
+     * It is triggered within a separate `nextTick` for each client under Node.js,
+     * and within `setTimeout` when running in web browsers.
+     *
+     * @param {} data
      * Data to be sent, according to the type template.
      *
-     * @param {Function} [cb]
+     * @param {(count: number) => void} [cb]
      * Optional callback function to be notified when the last recipient has received the data.
      * The function takes one parameter - total number of clients that received the data.
      *
@@ -48,8 +69,8 @@ export class Observable<T = any> {
      */
     public next(data: T, cb?: (count: number) => void): number {
         const r = this.getRecipients();
-        r.forEach((a, index) => nextCall(() => {
-            a(data);
+        r.forEach((func, index) => nextCall(() => {
+            func(data);
             if (index === r.length - 1 && typeof cb === 'function') {
                 cb(r.length); // finished sending
             }
@@ -60,23 +81,38 @@ export class Observable<T = any> {
     /**
      * Synchronous data broadcast.
      *
-     * @param data
+     * @param {} data
      * Data to be sent, according to the type template.
      *
      * @returns {number}
-     * Number of clients that received the data.
+     * Number of clients that have received the data.
      */
     public nextSync(data: T): number {
         const r = this.getRecipients();
-        r.forEach(a => a(data));
+        r.forEach(cb => cb(data));
         return r.length;
     }
 
+    /**
+     * Gets all recipients that must receive data sent by methods `next` and `nextSync`.
+     *
+     * It returns a copy of subscribers array for safe iteration, while applying the
+     * maximum limit when it is set with the `max` option.
+     */
     private getRecipients(): SubFunction<T>[] {
         const end = this.max ? this.max : this.subs.length;
         return this.subs.slice(0, end);
     }
 
+    /**
+     * Creates unsubscribe callback function for the `Subscription` class.
+     *
+     * @param {SubFunction} cb
+     * Subscription callback function.
+     *
+     * @returns {Function}
+     * Function that implements the unsubscribe request.
+     */
     protected createUnsub(cb: SubFunction<T>): () => void {
         return () => {
             this.subs.splice(this.subs.indexOf(cb), 1);
