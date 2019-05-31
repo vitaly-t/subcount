@@ -23,7 +23,7 @@ export class CountedObservable<T = any> extends Observable<T> {
     /**
      * Event onCount(({newCount, prevCount})=>void)
      */
-    readonly onCount: Observable<ISubCounts>;
+    readonly onCount: Observable<ISubCounts> = new Observable();
 
     /**
      * @constructor
@@ -31,11 +31,9 @@ export class CountedObservable<T = any> extends Observable<T> {
      * Configuration Options.
      */
     constructor(options?: ICountedOptions) {
-        const op = options ? options : {};
-        super({max: op.max});
-        this.onCount = new Observable();
+        super(options);
         const c = this.onCount;
-        this.send = (op.sync ? c.nextSync : c.next).bind(c);
+        this.send = (options && options.sync ? c.nextSync : c.next).bind(c);
     }
 
     protected createUnsub(cb: SubFunction<T>) {
