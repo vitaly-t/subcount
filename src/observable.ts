@@ -25,7 +25,7 @@ export class Observable<T = any> {
      * Configuration Options.
      */
     constructor(options?: IObservableOptions) {
-        this.max = (options && options.max > 0) ? options.max : 0;
+        this.max = options && options.max > 0 ? options.max : 0;
     }
 
     public subscribe(cb: SubFunction<T>): Subscription {
