@@ -16,7 +16,7 @@ export interface IObservableOptions {
 /**
  * Subscription callback function type.
  */
-export type SubFunction<T> = (data: T) => void;
+export type SubFunction<T> = (data: T) => any;
 
 /**
  * @class Observable
@@ -26,6 +26,7 @@ export type SubFunction<T> = (data: T) => void;
 export class Observable<T = any> {
     readonly max: number;
     protected subs: SubFunction<T>[] = [];
+    private caller: SubFunction<T>;
 
     /**
      * @constructor
@@ -92,6 +93,45 @@ export class Observable<T = any> {
         r.forEach(cb => cb(data));
         return r.length;
     }
+
+    /**
+     * Provided safety features:
+     *
+     * 1. do not send data to itself ???
+     * 2. handle async callback functions
+     * 3. report all errors
+     *
+     * @param data
+     * @param cb
+     */
+    public nextSafe(data: T, cb?: (count: number, errors: any[]) => void): number {
+        const r = this.getRecipients();
+        const err: any[] = [];
+        r.forEach((func, index) => nextCall(() => {
+            if (this.caller !== func) {
+                const prev = this.caller;
+                this.caller = func;
+                try {
+                    const res = func(data);
+                    if (res && typeof res.then === 'function') {
+                        res.catch((e: any) => {
+                            err.push(e);
+                            this.caller = prev;
+                        });
+                    } else {
+                        this.caller = prev;
+                    }
+                } catch (e) {
+                    err.push(e);
+                }
+            }
+            if (index === r.length - 1 && typeof cb === 'function') {
+                cb(r.length, err); // finished sending
+            }
+        }));
+        return r.length;
+    }
+
 
     /**
      * Gets all recipients that must receive data sent by methods `next` and `nextSync`.
