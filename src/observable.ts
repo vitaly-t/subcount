@@ -26,7 +26,6 @@ export type SubFunction<T> = (data: T) => any;
 export class Observable<T = any> {
     readonly max: number;
     protected subs: SubFunction<T>[] = [];
-    private caller: SubFunction<T>;
 
     /**
      * @constructor
@@ -97,36 +96,23 @@ export class Observable<T = any> {
     /**
      * Provided safety features:
      *
-     * 1. do not send data to itself ???
-     * 2. handle async callback functions
-     * 3. report all errors
+     * 1. Streams all errors into the callback
+     * 3. Handles asynchronous callbacks
      *
      * @param data
-     * @param cb
+     *
+     * @param onError
      */
-    public nextSafe(data: T, cb?: (count: number, errors: any[]) => void): number {
+    public nextSafe(data: T, onError: (error: any) => void): number {
         const r = this.getRecipients();
-        const err: any[] = [];
-        r.forEach((func, index) => nextCall(() => {
-            if (this.caller !== func) {
-                const prev = this.caller;
-                this.caller = func;
-                try {
-                    const res = func(data);
-                    if (res && typeof res.then === 'function') {
-                        res.catch((e: any) => {
-                            err.push(e);
-                            this.caller = prev;
-                        });
-                    } else {
-                        this.caller = prev;
-                    }
-                } catch (e) {
-                    err.push(e);
+        r.forEach(func => nextCall(() => {
+            try {
+                const res = func(data);
+                if (res && typeof res.catch === 'function') {
+                    res.catch(onError);
                 }
-            }
-            if (index === r.length - 1 && typeof cb === 'function') {
-                cb(r.length, err); // finished sending
+            } catch (e) {
+                onError(e);
             }
         }));
         return r.length;
