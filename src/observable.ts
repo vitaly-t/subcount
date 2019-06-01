@@ -38,13 +38,13 @@ export class Observable<T = any> {
     }
 
     /**
-     * Subscribes for receiving data events triggered by methods `next` and `nextSync`.
+     * Subscribes for receiving all data events.
      *
-     * @param cb
+     * @param {Function} cb
      * Data notification callback function.
      *
      * @returns {Subscription}
-     * Object to let unsubscribe safely.
+     * Object for unsubscribing safely.
      */
     public subscribe(cb: SubFunction<T>): Subscription {
         this.subs.push(cb);
@@ -52,15 +52,12 @@ export class Observable<T = any> {
     }
 
     /**
-     * Asynchronous data broadcast to all subscribed clients.
-     *
-     * It is triggered within a separate `nextTick` for each client under Node.js,
-     * and within `setTimeout` when running in web browsers.
+     * Asynchronous data broadcast to all subscribers.
      *
      * @param {} data
      * Data to be sent, according to the type template.
      *
-     * @param {(count: number) => void} [cb]
+     * @param {Function} [cb]
      * Optional callback function to be notified when the last recipient has received the data.
      * The function takes one parameter - total number of clients that received the data.
      *
@@ -69,8 +66,8 @@ export class Observable<T = any> {
      */
     public next(data: T, cb?: (count: number) => void): number {
         const r = this.getRecipients();
-        r.forEach((func, index) => nextCall(() => {
-            func(data);
+        r.forEach((sub, index) => nextCall(() => {
+            sub(data);
             if (index === r.length - 1 && typeof cb === 'function') {
                 cb(r.length); // finished sending
             }
@@ -79,35 +76,25 @@ export class Observable<T = any> {
     }
 
     /**
-     * Synchronous data broadcast.
+     * Safe asynchronous data broadcast to all subscribers.
+     *
+     * Errors from subscription callbacks are passed into the callback function,
+     * which handles both synchronous and asynchronous subscription functions.
      *
      * @param {} data
      * Data to be sent, according to the type template.
      *
+     * @param {Function} onError
+     * Callback for handling errors from subscribers.
+     *
      * @returns {number}
-     * Number of clients that have received the data.
+     * Number of clients that will be receiving the data.
      */
-    public nextSync(data: T): number {
+    public nextSafe(data: T, onError: (err: any) => void): number {
         const r = this.getRecipients();
-        r.forEach(cb => cb(data));
-        return r.length;
-    }
-
-    /**
-     * Provided safety features:
-     *
-     * 1. Streams all errors into the callback
-     * 3. Handles asynchronous callbacks
-     *
-     * @param data
-     *
-     * @param onError
-     */
-    public nextSafe(data: T, onError: (error: any) => void): number {
-        const r = this.getRecipients();
-        r.forEach(func => nextCall(() => {
+        r.forEach(sub => nextCall(() => {
             try {
-                const res = func(data);
+                const res = sub(data);
                 if (res && typeof res.catch === 'function') {
                     res.catch(onError);
                 }
@@ -118,9 +105,23 @@ export class Observable<T = any> {
         return r.length;
     }
 
+    /**
+     * Synchronous data broadcast to all subscribers.
+     *
+     * @param {} data
+     * Data to be sent, according to the type template.
+     *
+     * @returns {number}
+     * Number of clients that have received the data.
+     */
+    public nextSync(data: T): number {
+        const r = this.getRecipients();
+        r.forEach(sub => sub(data));
+        return r.length;
+    }
 
     /**
-     * Gets all recipients that must receive data sent by methods `next` and `nextSync`.
+     * Gets all recipients that must receive data.
      *
      * It returns a copy of subscribers array for safe iteration, while applying the
      * maximum limit when it is set with the `max` option.
