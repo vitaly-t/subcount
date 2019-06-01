@@ -31,7 +31,7 @@ export class Observable<T = any> {
      */
     readonly max: number;
 
-    protected subs: SubFunction<T>[] = [];
+    protected _subs: SubFunction<T>[] = [];
 
     /**
      * @constructor
@@ -53,7 +53,7 @@ export class Observable<T = any> {
      * Object for unsubscribing safely.
      */
     public subscribe(cb: SubFunction<T>): Subscription {
-        this.subs.push(cb);
+        this._subs.push(cb);
         return new Subscription(this.createUnsub(cb));
     }
 
@@ -71,7 +71,7 @@ export class Observable<T = any> {
      * Number of clients that will be receiving the data.
      */
     public next(data: T, cb?: (count: number) => void): number {
-        const r = this.getRecipients();
+        const r = this._getRecipients();
         r.forEach((sub, index) => nextCall(() => {
             sub(data);
             if (index === r.length - 1 && typeof cb === 'function') {
@@ -97,7 +97,7 @@ export class Observable<T = any> {
      * Number of clients that will be receiving the data.
      */
     public nextSafe(data: T, onError: (err: any) => void): number {
-        const r = this.getRecipients();
+        const r = this._getRecipients();
         r.forEach(sub => nextCall(() => {
             try {
                 const res = sub(data);
@@ -121,7 +121,7 @@ export class Observable<T = any> {
      * Number of clients that have received the data.
      */
     public nextSync(data: T): number {
-        const r = this.getRecipients();
+        const r = this._getRecipients();
         r.forEach(sub => sub(data));
         return r.length;
     }
@@ -130,7 +130,7 @@ export class Observable<T = any> {
      * Current number of subscribers.
      */
     public get count(): number {
-        return this.subs.length;
+        return this._subs.length;
     }
 
     /**
@@ -139,9 +139,9 @@ export class Observable<T = any> {
      * It returns a copy of subscribers array for safe iteration, while applying the
      * maximum limit when it is set with the `max` option.
      */
-    private getRecipients(): SubFunction<T>[] {
-        const end = this.max ? this.max : this.subs.length;
-        return this.subs.slice(0, end);
+    private _getRecipients(): SubFunction<T>[] {
+        const end = this.max ? this.max : this._subs.length;
+        return this._subs.slice(0, end);
     }
 
     /**
@@ -155,7 +155,7 @@ export class Observable<T = any> {
      */
     protected createUnsub(cb: SubFunction<T>): () => void {
         return () => {
-            this.subs.splice(this.subs.indexOf(cb), 1);
+            this._subs.splice(this._subs.indexOf(cb), 1);
         };
     }
 }

@@ -5,19 +5,19 @@
  * to provide a safe way to unsubscribe.
  */
 export class Subscription {
-    private unsub: () => void;
+    private _unsub: () => void;
 
     constructor(unsub: () => void) {
-        this.unsub = unsub;
+        this._unsub = unsub;
     }
 
     /**
      * Unsubscribes from the observable.
      */
     public unsubscribe(): void {
-        if (this.unsub) {
-            this.unsub();
-            this.unsub = null; // to protect from repeated calls
+        if (this._unsub) {
+            this._unsub();
+            this._unsub = null; // to protect from repeated calls
         }
     }
 }

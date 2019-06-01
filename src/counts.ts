@@ -28,7 +28,7 @@ export interface ICountedOptions extends IObservableOptions {
  * Extends `Observable` with `onCount` event to monitor subscriptions count.
  */
 export class CountedObservable<T = any> extends Observable<T> {
-    protected send: (data: any) => number;
+    protected _send: (data: any) => number;
 
     /**
      * Event onCount(({newCount, prevCount}) => void)
@@ -44,7 +44,7 @@ export class CountedObservable<T = any> extends Observable<T> {
     constructor(options?: ICountedOptions) {
         super(options);
         const c = this.onCount;
-        this.send = (options && options.sync ? c.nextSync : c.next).bind(c);
+        this._send = (options && options.sync ? c.nextSync : c.next).bind(c);
     }
 
     /**
@@ -54,11 +54,11 @@ export class CountedObservable<T = any> extends Observable<T> {
      * @param {SubFunction} cb
      */
     protected createUnsub(cb: SubFunction<T>): () => void {
-        const s = this.subs;
-        this.send({newCount: s.length, prevCount: s.length - 1});
+        const s = this._subs;
+        this._send({newCount: s.length, prevCount: s.length - 1});
         return () => {
             s.splice(s.indexOf(cb), 1);
-            this.send({newCount: s.length, prevCount: s.length + 1});
+            this._send({newCount: s.length, prevCount: s.length + 1});
         };
     }
 }
