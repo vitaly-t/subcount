@@ -24,7 +24,13 @@ export type SubFunction<T> = (data: T) => any;
  * Basic implementation of subscribing to events and triggering them.
  */
 export class Observable<T = any> {
+
+    /**
+     * Maximum number of subscribers that can receive data.
+     * 0 = "no limit applies"
+     */
     readonly max: number;
+
     protected subs: SubFunction<T>[] = [];
 
     /**
@@ -118,6 +124,13 @@ export class Observable<T = any> {
         const r = this.getRecipients();
         r.forEach(sub => sub(data));
         return r.length;
+    }
+
+    /**
+     * Current number of subscribers.
+     */
+    public get count(): number {
+        return this.subs.length;
     }
 
     /**

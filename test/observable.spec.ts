@@ -20,6 +20,7 @@ describe('Observable', () => {
         const s2 = chai.spy(cb2);
         a.subscribe(s1);
         a.subscribe(s2);
+        expect(a.count).to.equal(2);
         a.next(123, (count: number) => {
             expect(count).to.be.equal(1);
             expect(s1).to.have.been.called.with(123);
