@@ -20,9 +20,13 @@ describe('CountedObservable', () => {
             a.onCount.subscribe((data: ISubCounts) => {
                 received.push(data);
             });
-            a.subscribe(() => 123);
-            a.subscribe(() => 456);
+            const sub1 = a.subscribe(() => 123);
+            const sub2 = a.subscribe(() => 456);
+            expect(sub1.live).to.be.true;
+            expect(sub2.live).to.be.true;
             a.unsubscribeAll();
+            expect(sub1.live).to.be.false;
+            expect(sub2.live).to.be.false;
             expect(received).to.eql([
                 {newCount: 1, prevCount: 0},
                 {newCount: 2, prevCount: 1},

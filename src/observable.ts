@@ -19,6 +19,14 @@ export interface IObservableOptions {
 export type SubFunction<T> = (data: T) => any;
 
 /**
+ * Subscriber details.
+ */
+export interface ISubscriber<T> {
+    cb: SubFunction<T>;
+    cancel: () => void;
+}
+
+/**
  * @class Observable
  * @description
  * Implements subscribing to events and triggering them.
@@ -31,7 +39,7 @@ export class Observable<T = any> {
      */
     readonly max: number;
 
-    protected _subs: SubFunction<T>[] = [];
+    protected _subs: ISubscriber<T>[] = [];
 
     /**
      * @constructor
@@ -53,8 +61,12 @@ export class Observable<T = any> {
      * Object for unsubscribing safely.
      */
     public subscribe(cb: SubFunction<T>): Subscription {
-        this._subs.push(cb);
-        return new Subscription(this.createUnsub(cb));
+        const sub: ISubscriber<T> = {
+            cb,
+            cancel: null
+        };
+        this._subs.push(sub);
+        return new Subscription(this.createUnsub(sub), sub);
     }
 
     /**
@@ -74,7 +86,7 @@ export class Observable<T = any> {
     public next(data: T, cb?: (count: number) => void): number {
         const r = this._getRecipients();
         r.forEach((sub, index) => nextCall(() => {
-            sub(data);
+            sub.cb(data);
             if (index === r.length - 1 && typeof cb === 'function') {
                 cb(r.length); // finished sending
             }
@@ -101,7 +113,7 @@ export class Observable<T = any> {
         const r = this._getRecipients();
         r.forEach(sub => nextCall(() => {
             try {
-                const res = sub(data);
+                const res = sub.cb(data);
                 if (res && typeof res.catch === 'function') {
                     res.catch(onError);
                 }
@@ -125,7 +137,7 @@ export class Observable<T = any> {
      */
     public nextSync(data: T): number {
         const r = this._getRecipients();
-        r.forEach(sub => sub(data));
+        r.forEach(sub => sub.cb(data));
         return r.length;
     }
 
@@ -140,6 +152,7 @@ export class Observable<T = any> {
      * Unsubscribes all clients.
      */
     public unsubscribeAll(): void {
+        this._subs.forEach(sub => sub.cancel());
         this._subs.length = 0;
     }
 
@@ -149,7 +162,7 @@ export class Observable<T = any> {
      * It returns a copy of subscribers array for safe iteration, while applying the
      * maximum limit when it is set with the `max` option.
      */
-    private _getRecipients(): SubFunction<T>[] {
+    private _getRecipients(): ISubscriber<T>[] {
         const end = this.max ? this.max : this._subs.length;
         return this._subs.slice(0, end);
     }
@@ -157,27 +170,28 @@ export class Observable<T = any> {
     /**
      * Creates unsubscribe callback function for the `Subscription` class.
      *
-     * @param {SubFunction} cb
-     * Subscription callback function.
+     * @param {ISubscriber} sub
+     * Subscription details.
      *
      * @returns {Function}
      * Function that implements the unsubscribe request.
      */
-    protected createUnsub(cb: SubFunction<T>): () => void {
+    protected createUnsub(sub: ISubscriber<T>): () => void {
         return () => {
-            this.removeSub(cb);
+            this.removeSub(sub);
         };
     }
 
     /**
      * Safely removes subscription function from the list.
      *
-     * @param {SubFunction} cb
+     * @param {ISubscriber} sub
      * Subscription callback function.
      */
-    protected removeSub(cb: SubFunction<T>) {
-        const idx = this._subs.indexOf(cb);
+    protected removeSub(sub: ISubscriber<T>) {
+        const idx = this._subs.indexOf(sub);
         if (idx !== -1) {
+            this._subs[idx].cancel();
             this._subs.splice(idx, 1);
         }
     }
