@@ -1,4 +1,4 @@
-import {IObservableOptions, Observable, SubFunction} from './observable';
+import {IObservableOptions, ISubscriber, Observable} from './observable';
 
 /**
  * @interface ISubCounts
@@ -65,13 +65,13 @@ export class CountedObservable<T = any> extends Observable<T> {
      * Overrides base implementation to trigger event `onCount` during
      * subscribe and unsubscribe calls.
      *
-     * @param {SubFunction} cb
+     * @param {ISubscriber} sub
      */
-    protected createUnsub(cb: SubFunction<T>): () => void {
+    protected createUnsub(sub: ISubscriber<T>): () => void {
         const s = this._subs;
         this._notify({newCount: s.length, prevCount: s.length - 1});
         return () => {
-            this.removeSub(cb);
+            this.removeSub(sub);
             this._notify({newCount: s.length, prevCount: s.length + 1});
         };
     }

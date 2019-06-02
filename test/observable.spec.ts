@@ -2,7 +2,7 @@ import {expect, chai} from './';
 import {Observable} from '../src';
 
 describe('Observable', () => {
-    it('must notify about subscriptions', () => {
+    it('must invoke subscription functions', () => {
         const a = new Observable<number>();
         const cb = () => 1;
         const s = chai.spy(cb);
@@ -12,6 +12,26 @@ describe('Observable', () => {
             expect(s).to.have.been.called.with(123);
         });
     });
+    it('must track subscription count', () => {
+        const a = new Observable();
+        expect(a.count).to.equal(0);
+        const sub1 = a.subscribe(() => 1);
+        expect(a.count).to.equal(1);
+        const sub2 = a.subscribe(() => 2);
+        expect(a.count).to.equal(2);
+        sub1.unsubscribe();
+        expect(a.count).to.equal(1);
+        sub2.unsubscribe();
+        expect(a.count).to.equal(0);
+    });
+    it('must track subscription live status', () => {
+        const a = new Observable();
+        const sub = a.subscribe(() => 1);
+        expect(sub.live).to.be.true;
+        sub.unsubscribe();
+        expect(sub.live).to.be.false;
+    });
+
     it('must limit notifications according to the max option', () => {
         const a = new Observable<number>({max: 1});
         const cb1 = () => 1;
@@ -60,13 +80,14 @@ describe('Observable', () => {
         it('must cancel all current subscriptions', () => {
             const received: string[] = [];
             const a = new Observable<string>();
-            a.subscribe(value => {
+            const sub = a.subscribe(value => {
                 received.push(value);
             });
             a.nextSync('first');
             a.unsubscribeAll();
             a.nextSync('second');
             expect(received).to.eql(['first']);
+            expect(sub.live).to.be.false;
         });
     });
 });
