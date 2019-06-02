@@ -22,7 +22,15 @@ export type SubFunction<T> = (data: T) => any;
  * Subscriber details.
  */
 export interface ISubscriber<T> {
+
+    /**
+     * Subscription callback function.
+     */
     cb: SubFunction<T>;
+
+    /**
+     * Cancels the subscription.
+     */
     cancel: () => void;
 }
 
@@ -54,17 +62,14 @@ export class Observable<T = any> {
     /**
      * Subscribes for receiving all data events.
      *
-     * @param {Function} cb
+     * @param {SubFunction} cb
      * Data notification callback function.
      *
      * @returns {Subscription}
      * Object for unsubscribing safely.
      */
     public subscribe(cb: SubFunction<T>): Subscription {
-        const sub: ISubscriber<T> = {
-            cb,
-            cancel: null
-        };
+        const sub: ISubscriber<T> = {cb, cancel: null};
         this._subs.push(sub);
         return new Subscription(this.createUnsub(sub), sub);
     }
@@ -171,7 +176,7 @@ export class Observable<T = any> {
      * Creates unsubscribe callback function for the `Subscription` class.
      *
      * @param {ISubscriber} sub
-     * Subscription details.
+     * Subscriber details.
      *
      * @returns {Function}
      * Function that implements the unsubscribe request.
@@ -183,17 +188,15 @@ export class Observable<T = any> {
     }
 
     /**
-     * Safely removes subscription function from the list.
+     * Removes an existing subscriber from the list.
      *
      * @param {ISubscriber} sub
-     * Subscription callback function.
+     * Subscriber to be removed, which must be on the list.
      */
     protected removeSub(sub: ISubscriber<T>) {
         const idx = this._subs.indexOf(sub);
-        if (idx !== -1) {
-            this._subs[idx].cancel();
-            this._subs.splice(idx, 1);
-        }
+        this._subs[idx].cancel();
+        this._subs.splice(idx, 1);
     }
 }
 

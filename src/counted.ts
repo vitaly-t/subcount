@@ -64,8 +64,6 @@ export class CountedObservable<T = any> extends Observable<T> {
     /**
      * Overrides base implementation to trigger event `onCount` during
      * subscribe and unsubscribe calls.
-     *
-     * @param {ISubscriber} sub
      */
     protected createUnsub(sub: ISubscriber<T>): () => void {
         const s = this._subs;
