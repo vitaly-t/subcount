@@ -25,7 +25,7 @@ export class Subscription {
     }
 
     /**
-     * Unsubscribes from the observable.
+     * Unsubscribes a live subscription from the observable.
      */
     public unsubscribe(): void {
         if (this._unsub) {
