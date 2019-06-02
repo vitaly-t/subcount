@@ -1,6 +1,6 @@
 {
   "name": "subcount",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "Simplified observable with subscriptions + counters.",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
