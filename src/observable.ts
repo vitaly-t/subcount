@@ -166,7 +166,7 @@ export class Observable<T = any> {
      * Removes subscription function from the list.
      *
      * @param {SubFunction} cb
-     * Subscription callback function, which must on the list.
+     * Subscription callback function, which must be on the list.
      */
     protected removeSub(cb: SubFunction<T>) {
         this._subs.splice(this._subs.indexOf(cb), 1);
