@@ -56,4 +56,17 @@ describe('Observable', () => {
             });
         });
     });
+    describe('unsubscribeAll', () => {
+        it('must cancel all current subscriptions', () => {
+            const received: string[] = [];
+            const a = new Observable<string>();
+            a.subscribe(value => {
+                received.push(value);
+            });
+            a.nextSync('first');
+            a.unsubscribeAll();
+            a.nextSync('second');
+            expect(received).to.eql(['first']);
+        });
+    });
 });
