@@ -48,6 +48,20 @@ export class CountedObservable<T = any> extends Observable<T> {
     }
 
     /**
+     * Unsubscribes all clients.
+     *
+     * It overrides base implementation to trigger event `onCount`
+     * when there is at least one subscribed client.
+     */
+    public unsubscribeAll(): void {
+        const prevCount = this.count;
+        if (prevCount) {
+            super.unsubscribeAll();
+            this._notify({newCount: 0, prevCount});
+        }
+    }
+
+    /**
      * Overrides base implementation to trigger event `onCount` during
      * subscribe and unsubscribe calls.
      *
