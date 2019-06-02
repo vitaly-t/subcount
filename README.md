@@ -102,4 +102,4 @@ See also - [the source code](./src), which is very small and well documented.
 
 [RXJS]:https://github.com/reactivex/rxjs
 [Observable]:https://github.com/vitaly-t/subcount/blob/master/src/observable.ts
-[CountedObservable]:https://github.com/vitaly-t/subcount/blob/master/src/counts.ts
+[CountedObservable]:https://github.com/vitaly-t/subcount/blob/master/src/counted.ts
