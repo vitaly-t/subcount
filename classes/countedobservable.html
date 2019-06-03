@@ -913,6 +913,9 @@ img { max-width: 100%; }
 				<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
 					<a href="countedobservable.html#constructor" class="tsd-kind-icon">constructor</a>
 				</li>
+				<li class=" tsd-kind-event tsd-parent-kind-class">
+					<a href="countedobservable.html#oncount" class="tsd-kind-icon">on<wbr>Count</a>
+				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
 					<a href="countedobservable.html#_notify" class="tsd-kind-icon">_notify</a>
 				</li>
@@ -921,9 +924,6 @@ img { max-width: 100%; }
 				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a href="countedobservable.html#max" class="tsd-kind-icon">max</a>
-				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-class">
-					<a href="countedobservable.html#oncount" class="tsd-kind-icon">on<wbr>Count</a>
 				</li>
 				<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
 					<a href="countedobservable.html#count" class="tsd-kind-icon">count</a>
@@ -966,12 +966,6 @@ img { max-width: 100%; }
 		<li class=" tsd-kind-interface">
 			<a href="../interfaces/isubcounts.html" class="tsd-kind-icon">ISub<wbr>Counts</a>
 		</li>
-		<li class=" tsd-kind-interface tsd-has-type-parameter">
-			<a href="../interfaces/isubscriber.html" class="tsd-kind-icon">ISubscriber</a>
-		</li>
-		<li class=" tsd-kind-type-alias tsd-has-type-parameter">
-			<a href="../globals.html#subfunction" class="tsd-kind-icon">Sub<wbr>Function</a>
-		</li>
 	</ul>
 </nav>
 <div class="container container-main">
@@ -980,10 +974,7 @@ img { max-width: 100%; }
 			<div class="tsd-comment tsd-typography">
 				<dl class="tsd-comment-tags">
 					<dt>class</dt>
-					<dd><p>CountedObservable</p>
-					</dd>
-					<dt>description</dt>
-					<dd><p>Extends <code>Observable</code> with <code>onCount</code> event to monitor subscriptions count.</p>
+					<dd><p>Extends <a href="observable.html">Observable</a> with <a href="countedobservable.html#oncount">onCount</a> event to monitor subscriptions count.</p>
 					</dd>
 				</dl>
 			</div>
@@ -1020,12 +1011,17 @@ img { max-width: 100%; }
 						</ul>
 					</section>
 					<section class="tsd-index-section ">
+						<h3>Events</h3>
+						<ul class="tsd-index-list">
+							<li class="tsd-kind-event tsd-parent-kind-class"><a href="countedobservable.html#oncount" class="tsd-kind-icon">on<wbr>Count</a></li>
+						</ul>
+					</section>
+					<section class="tsd-index-section ">
 						<h3>Properties</h3>
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="countedobservable.html#_notify" class="tsd-kind-icon">_notify</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="countedobservable.html#_subs" class="tsd-kind-icon">_subs</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="countedobservable.html#max" class="tsd-kind-icon">max</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-class"><a href="countedobservable.html#oncount" class="tsd-kind-icon">on<wbr>Count</a></li>
 						</ul>
 					</section>
 					<section class="tsd-index-section tsd-is-inherited">
@@ -1062,14 +1058,10 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Overrides <a href="observable.html">Observable</a>.<a href="observable.html#constructor">constructor</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/bd75fb8/src/counted.ts#L36">src/counted.ts:36</a></li>
+								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/603a1da/src/counted.ts#L43">src/counted.ts:43</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
-							<dl class="tsd-comment-tags">
-								<dt>constructor</dt>
-								<dd></dd>
-							</dl>
 						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
@@ -1083,6 +1075,24 @@ img { max-width: 100%; }
 			</section>
 		</section>
 		<section class="tsd-panel-group tsd-member-group ">
+			<h2>Events</h2>
+			<section class="tsd-panel tsd-member tsd-kind-event tsd-parent-kind-class">
+				<a name="oncount" class="tsd-anchor"></a>
+				<h3>on<wbr>Count</h3>
+				<div class="tsd-signature tsd-kind-icon">on<wbr>Count<span class="tsd-signature-symbol">:</span> <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/isubcounts.html" class="tsd-signature-type">ISubCounts</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new Observable()</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/603a1da/src/counted.ts#L43">src/counted.ts:43</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Notifies of any change in the number of subscribers.</p>
+					</div>
+				</div>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Properties</h2>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
 				<a name="_notify" class="tsd-anchor"></a>
@@ -1090,7 +1100,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">_notify<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/bd75fb8/src/counted.ts#L31">src/counted.ts:31</a></li>
+						<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/603a1da/src/counted.ts#L37">src/counted.ts:37</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-type-declaration">
@@ -1118,13 +1128,18 @@ img { max-width: 100%; }
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 				<a name="_subs" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagProtected">Protected</span> _subs</h3>
-				<div class="tsd-signature tsd-kind-icon">_subs<span class="tsd-signature-symbol">:</span> <a href="../interfaces/isubscriber.html" class="tsd-signature-type">ISubscriber</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
+				<div class="tsd-signature tsd-kind-icon">_subs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ISubscriber</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
 				<aside class="tsd-sources">
 					<p>Inherited from <a href="observable.html">Observable</a>.<a href="observable.html#_subs">_subs</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/bd75fb8/src/observable.ts#L50">src/observable.ts:50</a></li>
+						<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/603a1da/src/observable.ts#L54">src/observable.ts:54</a></li>
 					</ul>
 				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Internal list of subscribers.</p>
+					</div>
+				</div>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 				<a name="max" class="tsd-anchor"></a>
@@ -1133,28 +1148,13 @@ img { max-width: 100%; }
 				<aside class="tsd-sources">
 					<p>Inherited from <a href="observable.html">Observable</a>.<a href="observable.html#max">max</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/bd75fb8/src/observable.ts#L48">src/observable.ts:48</a></li>
+						<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/603a1da/src/observable.ts#L49">src/observable.ts:49</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
 						<p>Maximum number of subscribers that can receive data.
 						0 = &quot;no limit applies&quot;</p>
-					</div>
-				</div>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-				<a name="oncount" class="tsd-anchor"></a>
-				<h3>on<wbr>Count</h3>
-				<div class="tsd-signature tsd-kind-icon">on<wbr>Count<span class="tsd-signature-symbol">:</span> <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/isubcounts.html" class="tsd-signature-type">ISubCounts</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new Observable()</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/bd75fb8/src/counted.ts#L36">src/counted.ts:36</a></li>
-					</ul>
-				</aside>
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>Event onCount(({newCount, prevCount}) =&gt; void)</p>
 					</div>
 				</div>
 			</section>
@@ -1168,7 +1168,7 @@ img { max-width: 100%; }
 				<aside class="tsd-sources">
 					<p>Inherited from <a href="observable.html">Observable</a>.<a href="observable.html#count">count</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/bd75fb8/src/observable.ts#L152">src/observable.ts:152</a></li>
+						<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/603a1da/src/observable.ts#L154">src/observable.ts:154</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1184,26 +1184,26 @@ img { max-width: 100%; }
 				<a name="_createunsub" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagProtected">Protected</span> _create<wbr>Unsub</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
-					<li class="tsd-signature tsd-kind-icon">_create<wbr>Unsub<span class="tsd-signature-symbol">(</span>sub<span class="tsd-signature-symbol">: </span><a href="../interfaces/isubscriber.html" class="tsd-signature-type">ISubscriber</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+					<li class="tsd-signature tsd-kind-icon">_create<wbr>Unsub<span class="tsd-signature-symbol">(</span>sub<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ISubscriber</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<p>Overrides <a href="observable.html">Observable</a>.<a href="observable.html#_createunsub">_createUnsub</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/bd75fb8/src/counted.ts#L68">src/counted.ts:68</a></li>
+								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/603a1da/src/counted.ts#L73">src/counted.ts:73</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
-								<p>Overrides base implementation to trigger event <code>onCount</code> during
+								<p>Overrides base implementation to trigger event <a href="countedobservable.html#oncount">onCount</a> during
 								subscribe and unsubscribe calls.</p>
 							</div>
 						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>sub: <a href="../interfaces/isubscriber.html" class="tsd-signature-type">ISubscriber</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5>sub: <span class="tsd-signature-type">ISubscriber</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
@@ -1226,14 +1226,14 @@ img { max-width: 100%; }
 				<a name="_removesub" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagProtected">Protected</span> _remove<wbr>Sub</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-					<li class="tsd-signature tsd-kind-icon">_remove<wbr>Sub<span class="tsd-signature-symbol">(</span>sub<span class="tsd-signature-symbol">: </span><a href="../interfaces/isubscriber.html" class="tsd-signature-type">ISubscriber</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					<li class="tsd-signature tsd-kind-icon">_remove<wbr>Sub<span class="tsd-signature-symbol">(</span>sub<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ISubscriber</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="observable.html">Observable</a>.<a href="observable.html#_removesub">_removeSub</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/bd75fb8/src/observable.ts#L196">src/observable.ts:196</a></li>
+								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/603a1da/src/observable.ts#L198">src/observable.ts:198</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1244,7 +1244,7 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>sub: <a href="../interfaces/isubscriber.html" class="tsd-signature-type">ISubscriber</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5>sub: <span class="tsd-signature-type">ISubscriber</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>Subscriber to be removed, which must be on the list.</p>
 								</div>
@@ -1265,7 +1265,7 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="observable.html">Observable</a>.<a href="observable.html#next">next</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/bd75fb8/src/observable.ts#L91">src/observable.ts:91</a></li>
+								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/603a1da/src/observable.ts#L93">src/observable.ts:93</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1319,7 +1319,7 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="observable.html">Observable</a>.<a href="observable.html#nextsafe">nextSafe</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/bd75fb8/src/observable.ts#L117">src/observable.ts:117</a></li>
+								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/603a1da/src/observable.ts#L119">src/observable.ts:119</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1378,7 +1378,7 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="observable.html">Observable</a>.<a href="observable.html#nextsync">nextSync</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/bd75fb8/src/observable.ts#L143">src/observable.ts:143</a></li>
+								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/603a1da/src/observable.ts#L145">src/observable.ts:145</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1405,14 +1405,14 @@ img { max-width: 100%; }
 				<a name="subscribe" class="tsd-anchor"></a>
 				<h3>subscribe</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-					<li class="tsd-signature tsd-kind-icon">subscribe<span class="tsd-signature-symbol">(</span>cb<span class="tsd-signature-symbol">: </span><a href="../globals.html#subfunction" class="tsd-signature-type">SubFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="subscription.html" class="tsd-signature-type">Subscription</a></li>
+					<li class="tsd-signature tsd-kind-icon">subscribe<span class="tsd-signature-symbol">(</span>cb<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SubFunction</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="subscription.html" class="tsd-signature-type">Subscription</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="observable.html">Observable</a>.<a href="observable.html#subscribe">subscribe</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/bd75fb8/src/observable.ts#L71">src/observable.ts:71</a></li>
+								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/603a1da/src/observable.ts#L73">src/observable.ts:73</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1423,7 +1423,7 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>cb: <a href="../globals.html#subfunction" class="tsd-signature-type">SubFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5>cb: <span class="tsd-signature-type">SubFunction</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>Data notification callback function.</p>
 								</div>
@@ -1445,14 +1445,14 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Overrides <a href="observable.html">Observable</a>.<a href="observable.html#unsubscribeall">unsubscribeAll</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/bd75fb8/src/counted.ts#L56">src/counted.ts:56</a></li>
+								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/603a1da/src/counted.ts#L61">src/counted.ts:61</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
 								<p>Unsubscribes all clients.</p>
 							</div>
-							<p>It overrides base implementation to trigger event <code>onCount</code>
+							<p>It overrides base implementation to trigger event <a href="countedobservable.html#oncount">onCount</a>
 							when there is at least one subscribed client.</p>
 						</div>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>

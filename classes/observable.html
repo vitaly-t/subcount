@@ -960,12 +960,6 @@ img { max-width: 100%; }
 		<li class=" tsd-kind-interface">
 			<a href="../interfaces/isubcounts.html" class="tsd-kind-icon">ISub<wbr>Counts</a>
 		</li>
-		<li class=" tsd-kind-interface tsd-has-type-parameter">
-			<a href="../interfaces/isubscriber.html" class="tsd-kind-icon">ISubscriber</a>
-		</li>
-		<li class=" tsd-kind-type-alias tsd-has-type-parameter">
-			<a href="../globals.html#subfunction" class="tsd-kind-icon">Sub<wbr>Function</a>
-		</li>
 	</ul>
 </nav>
 <div class="container container-main">
@@ -974,9 +968,6 @@ img { max-width: 100%; }
 			<div class="tsd-comment tsd-typography">
 				<dl class="tsd-comment-tags">
 					<dt>class</dt>
-					<dd><p>Observable</p>
-					</dd>
-					<dt>description</dt>
 					<dd><p>Implements subscribing to events and triggering them.</p>
 					</dd>
 				</dl>
@@ -1053,14 +1044,10 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/bd75fb8/src/observable.ts#L50">src/observable.ts:50</a></li>
+								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/603a1da/src/observable.ts#L54">src/observable.ts:54</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
-							<dl class="tsd-comment-tags">
-								<dt>constructor</dt>
-								<dd></dd>
-							</dl>
 						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
@@ -1078,12 +1065,17 @@ img { max-width: 100%; }
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
 				<a name="_subs" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagProtected">Protected</span> _subs</h3>
-				<div class="tsd-signature tsd-kind-icon">_subs<span class="tsd-signature-symbol">:</span> <a href="../interfaces/isubscriber.html" class="tsd-signature-type">ISubscriber</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
+				<div class="tsd-signature tsd-kind-icon">_subs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ISubscriber</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/bd75fb8/src/observable.ts#L50">src/observable.ts:50</a></li>
+						<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/603a1da/src/observable.ts#L54">src/observable.ts:54</a></li>
 					</ul>
 				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Internal list of subscribers.</p>
+					</div>
+				</div>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 				<a name="max" class="tsd-anchor"></a>
@@ -1091,7 +1083,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">max<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/bd75fb8/src/observable.ts#L48">src/observable.ts:48</a></li>
+						<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/603a1da/src/observable.ts#L49">src/observable.ts:49</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1110,7 +1102,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">count<span class="tsd-signature-symbol">:</span> </div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/bd75fb8/src/observable.ts#L152">src/observable.ts:152</a></li>
+						<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/603a1da/src/observable.ts#L154">src/observable.ts:154</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1126,24 +1118,24 @@ img { max-width: 100%; }
 				<a name="_createunsub" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagProtected">Protected</span> _create<wbr>Unsub</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
-					<li class="tsd-signature tsd-kind-icon">_create<wbr>Unsub<span class="tsd-signature-symbol">(</span>sub<span class="tsd-signature-symbol">: </span><a href="../interfaces/isubscriber.html" class="tsd-signature-type">ISubscriber</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+					<li class="tsd-signature tsd-kind-icon">_create<wbr>Unsub<span class="tsd-signature-symbol">(</span>sub<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ISubscriber</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/bd75fb8/src/observable.ts#L184">src/observable.ts:184</a></li>
+								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/603a1da/src/observable.ts#L186">src/observable.ts:186</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
-								<p>Creates unsubscribe callback function for the <code>Subscription</code> class.</p>
+								<p>Creates unsubscribe callback function for the <a href="subscription.html">Subscription</a> class.</p>
 							</div>
 						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>sub: <a href="../interfaces/isubscriber.html" class="tsd-signature-type">ISubscriber</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5>sub: <span class="tsd-signature-type">ISubscriber</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>Subscriber details.</p>
 								</div>
@@ -1170,13 +1162,13 @@ img { max-width: 100%; }
 				<a name="_removesub" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagProtected">Protected</span> _remove<wbr>Sub</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
-					<li class="tsd-signature tsd-kind-icon">_remove<wbr>Sub<span class="tsd-signature-symbol">(</span>sub<span class="tsd-signature-symbol">: </span><a href="../interfaces/isubscriber.html" class="tsd-signature-type">ISubscriber</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					<li class="tsd-signature tsd-kind-icon">_remove<wbr>Sub<span class="tsd-signature-symbol">(</span>sub<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ISubscriber</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/bd75fb8/src/observable.ts#L196">src/observable.ts:196</a></li>
+								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/603a1da/src/observable.ts#L198">src/observable.ts:198</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1187,7 +1179,7 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>sub: <a href="../interfaces/isubscriber.html" class="tsd-signature-type">ISubscriber</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5>sub: <span class="tsd-signature-type">ISubscriber</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>Subscriber to be removed, which must be on the list.</p>
 								</div>
@@ -1207,7 +1199,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/bd75fb8/src/observable.ts#L91">src/observable.ts:91</a></li>
+								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/603a1da/src/observable.ts#L93">src/observable.ts:93</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1260,7 +1252,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/bd75fb8/src/observable.ts#L117">src/observable.ts:117</a></li>
+								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/603a1da/src/observable.ts#L119">src/observable.ts:119</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1318,7 +1310,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/bd75fb8/src/observable.ts#L143">src/observable.ts:143</a></li>
+								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/603a1da/src/observable.ts#L145">src/observable.ts:145</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1345,13 +1337,13 @@ img { max-width: 100%; }
 				<a name="subscribe" class="tsd-anchor"></a>
 				<h3>subscribe</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">subscribe<span class="tsd-signature-symbol">(</span>cb<span class="tsd-signature-symbol">: </span><a href="../globals.html#subfunction" class="tsd-signature-type">SubFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="subscription.html" class="tsd-signature-type">Subscription</a></li>
+					<li class="tsd-signature tsd-kind-icon">subscribe<span class="tsd-signature-symbol">(</span>cb<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SubFunction</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="subscription.html" class="tsd-signature-type">Subscription</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/bd75fb8/src/observable.ts#L71">src/observable.ts:71</a></li>
+								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/603a1da/src/observable.ts#L73">src/observable.ts:73</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1362,7 +1354,7 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>cb: <a href="../globals.html#subfunction" class="tsd-signature-type">SubFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5>cb: <span class="tsd-signature-type">SubFunction</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>Data notification callback function.</p>
 								</div>
@@ -1383,7 +1375,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/bd75fb8/src/observable.ts#L159">src/observable.ts:159</a></li>
+								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/603a1da/src/observable.ts#L161">src/observable.ts:161</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
