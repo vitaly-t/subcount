@@ -2,13 +2,13 @@
 
 [![Build Status](https://travis-ci.org/vitaly-t/subcount.svg?branch=master)](https://travis-ci.org/vitaly-t/subcount)
 
-Simplified observable, with support for event subscriptions + counters out of the box. 
+Observable events in TypeScript, with monitored subscriptions.
 
-## Rationale
+## Preamble
 
-This module was written to avoid the overhead of [RXJS] when all you need is basic event subscriptions + counters.
+It was originally written to overcome [RXJS] complexities of monitoring subscriptions, see [this issue](https://stackoverflow.com/questions/56195932/how-to-monitor-number-of-rxjs-subscriptions). 
 
-See the [following issue](https://stackoverflow.com/questions/56195932/how-to-monitor-number-of-rxjs-subscriptions) that precipitated this.
+However, it is now a powerful event-handling engine of its own, which works across all browsers and Node.js versions.  
 
 ## Usage
 
