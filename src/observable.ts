@@ -71,7 +71,7 @@ export class Observable<T = any> {
     public subscribe(cb: SubFunction<T>): Subscription {
         const sub: ISubscriber<T> = {cb, cancel: null};
         this._subs.push(sub);
-        return new Subscription(this.createUnsub(sub), sub);
+        return new Subscription(this._createUnsub(sub), sub);
     }
 
     /**
@@ -181,9 +181,9 @@ export class Observable<T = any> {
      * @returns {Function}
      * Function that implements the unsubscribe request.
      */
-    protected createUnsub(sub: ISubscriber<T>): () => void {
+    protected _createUnsub(sub: ISubscriber<T>): () => void {
         return () => {
-            this.removeSub(sub);
+            this._removeSub(sub);
         };
     }
 
@@ -193,7 +193,7 @@ export class Observable<T = any> {
      * @param {ISubscriber} sub
      * Subscriber to be removed, which must be on the list.
      */
-    protected removeSub(sub: ISubscriber<T>) {
+    protected _removeSub(sub: ISubscriber<T>) {
         const idx = this._subs.indexOf(sub);
         this._subs[idx].cancel();
         this._subs.splice(idx, 1);

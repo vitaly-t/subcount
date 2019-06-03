@@ -17,7 +17,7 @@ export class Subscription {
     /**
      * Indicates whether the subscription is live / active.
      *
-     * It can be useful for subscribers, if `unsubscribe` or `unsubscribeAll`
+     * It can be useful for subscribers when `unsubscribe` or `unsubscribeAll`
      * can be used without their knowledge.
      */
     public get live(): boolean {
