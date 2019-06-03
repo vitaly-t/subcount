@@ -14,5 +14,14 @@
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "typedocOptions": {
+    "name": "SUBCOUNT",
+    "excludeExternals": true,
+    "excludePrivate": true,
+    "excludeNotExported": true,
+    "mode": "file",
+    "out": "docs",
+    "theme": "minimal"
+  }
 }
