@@ -8,7 +8,7 @@ Observable events in TypeScript, with monitored subscriptions.
 
 It was originally written to overcome [RXJS] complexities of monitoring subscriptions, see [this issue](https://stackoverflow.com/questions/56195932/how-to-monitor-number-of-rxjs-subscriptions). 
 
-However, it is now a powerful event-handling engine of its own, which works across all browsers and Node.js versions.  
+However, it is now a powerful event-handling engine by itself, supporting all browsers and Node.js versions.  
 
 ## Usage
 
@@ -79,8 +79,6 @@ Including `./subcount/dist` in your HTML will give you access to all types under
     });
 </script>
 ``` 
-
-This will work in all browsers, including ones as old as IE9.
 
 And when using it directly in TypeScript, you can compile and bundle it any way you want.
 
