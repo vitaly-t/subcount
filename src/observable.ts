@@ -54,7 +54,7 @@ export class Observable<T = any> {
     protected _subs: ISubscriber<T>[] = [];
 
     /**
-     * @param [options]
+     * @param options
      * Configuration Options.
      */
     constructor(options?: IObservableOptions) {
@@ -82,7 +82,7 @@ export class Observable<T = any> {
      * @param data
      * Data to be sent, according to the type template.
      *
-     * @param [cb]
+     * @param cb
      * Optional callback function to be notified when the last recipient has received the data.
      * The function takes one parameter - total number of clients that received the data.
      * Note that asynchronous subscribers me still be processing the data at this point.

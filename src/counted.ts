@@ -43,7 +43,7 @@ export class CountedObservable<T = any> extends Observable<T> {
     readonly onCount: Observable<ISubCounts> = new Observable();
 
     /**
-     * @param [options]
+     * @param options
      * Configuration Options.
      */
     constructor(options?: ICountedOptions) {
