@@ -8,9 +8,10 @@
   "scripts": {
     "all": "npm run build && npm test && npm run lint",
     "build": "tsc && npm run browserify",
-    "test": "mocha -r ts-node/register test/**/*.spec.ts",
+    "browserify": "browserify dist/src/index.js -s subcount -o dist/index.js",
+    "doc": "./node_modules/.bin/typedoc",
     "lint": "./node_modules/.bin/tslint --fix ./src/**/*.ts ./test/**/*.ts",
-    "browserify": "browserify dist/src/index.js -s subcount -o dist/index.js"
+    "test": "mocha -r ts-node/register test/**/*.spec.ts"
   },
   "files": [
     "dist/src",
@@ -48,6 +49,7 @@
     "mocha": "6.1.4",
     "ts-node": "8.2.0",
     "tslint": "5.17.0",
+    "typedoc": "0.14.2",
     "typescript": "3.5.1"
   }
 }
