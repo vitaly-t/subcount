@@ -3,7 +3,7 @@ import {Subscription} from './subscription';
 /**
  * @interface IObservableOptions
  * @description
- * Constructor options for the `Observable` class.
+ * Constructor options for the [[Observable]] class.
  */
 export interface IObservableOptions {
     /**
@@ -181,7 +181,7 @@ export class Observable<T = any> {
      * Subscriber details.
      *
      * @returns
-     * Function that implements the unsubscribe request.
+     * Function that implements the `unsubscribe` request.
      */
     protected _createUnsub(sub: ISubscriber<T>): () => void {
         return () => {
