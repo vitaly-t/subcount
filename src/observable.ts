@@ -8,7 +8,7 @@ import {Subscription} from './subscription';
 export interface IObservableOptions {
     /**
      * Maximum number of subscribers that can receive data.
-     * Default is 0, meaning "no limit applies"
+     * Default is 0, meaning `no limit applies`.
      */
     max?: number;
 }
@@ -44,7 +44,7 @@ export class Observable<T = any> {
 
     /**
      * Maximum number of subscribers that can receive data.
-     * 0 = "no limit applies"
+     * 0 = `no limit applies`.
      */
     readonly max: number;
 
@@ -62,7 +62,7 @@ export class Observable<T = any> {
     }
 
     /**
-     * Subscribes for receiving all data events.
+     * Subscribes to receive all data events.
      *
      * @param cb
      * Data notification callback function.
