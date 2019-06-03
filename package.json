@@ -1,6 +1,6 @@
 {
   "name": "subcount",
-  "version": "1.6.3",
+  "version": "1.6.4",
   "description": "Observable events with monitored subscriptions.",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",

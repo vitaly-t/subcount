@@ -169,7 +169,7 @@ export class Observable<T = any> {
      * It returns a copy of subscribers array for safe iteration, while applying the
      * maximum limit when it is set with the `max` option.
      */
-    private _getRecipients(): ISubscriber<T>[] {
+    protected _getRecipients(): ISubscriber<T>[] {
         const end = this.max ? this.max : this._subs.length;
         return this._subs.slice(0, end);
     }
