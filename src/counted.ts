@@ -3,42 +3,47 @@ import {IObservableOptions, ISubscriber, Observable} from './observable';
 /**
  * @interface ISubCounts
  * @description
- * Type used for `onCount` subscriptions.
+ * Type used for [[onCount]] subscriptions.
  */
 export interface ISubCounts {
+    /**
+     * New number of subscribers.
+     */
     newCount: number;
+
+    /**
+     * Previous number of subscribers.
+     */
     prevCount: number;
 }
 
 /**
  * @interface ICountedOptions
  * @description
- * Constructor options for the `CountedObservable` class.
+ * Constructor options for the [[CountedObservable]] class.
  */
 export interface ICountedOptions extends IObservableOptions {
     /**
-     * Makes `onCount` calls synchronous. Default is false.
+     * Makes [[onCount]] calls synchronous. Default is `false`.
      */
     sync?: boolean;
 }
 
 /**
- * @class CountedObservable
- * @description
- * Extends `Observable` with `onCount` event to monitor subscriptions count.
+ * @class
+ * Extends [[Observable]] with [[onCount]] event to monitor subscriptions count.
  */
 export class CountedObservable<T = any> extends Observable<T> {
     protected _notify: (data: any) => number;
 
     /**
-     * Event onCount(({newCount, prevCount}) => void)
+     * Notifies of any change in the number of subscribers.
+     * @event
      */
     readonly onCount: Observable<ISubCounts> = new Observable();
 
     /**
-     * @constructor
-     *
-     * @param {ICountedOptions} [options]
+     * @param [options]
      * Configuration Options.
      */
     constructor(options?: ICountedOptions) {
@@ -50,7 +55,7 @@ export class CountedObservable<T = any> extends Observable<T> {
     /**
      * Unsubscribes all clients.
      *
-     * It overrides base implementation to trigger event `onCount`
+     * It overrides base implementation to trigger event [[onCount]]
      * when there is at least one subscribed client.
      */
     public unsubscribeAll(): void {
@@ -62,7 +67,7 @@ export class CountedObservable<T = any> extends Observable<T> {
     }
 
     /**
-     * Overrides base implementation to trigger event `onCount` during
+     * Overrides base implementation to trigger event [[onCount]] during
      * subscribe and unsubscribe calls.
      */
     protected _createUnsub(sub: ISubscriber<T>): () => void {

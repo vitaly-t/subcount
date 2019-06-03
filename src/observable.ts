@@ -15,11 +15,13 @@ export interface IObservableOptions {
 
 /**
  * Subscription callback function type.
+ * @hidden
  */
 export type SubFunction<T> = (data: T) => any;
 
 /**
  * Subscriber details.
+ * @hidden
  */
 export interface ISubscriber<T> {
 
@@ -35,8 +37,7 @@ export interface ISubscriber<T> {
 }
 
 /**
- * @class Observable
- * @description
+ * @class
  * Implements subscribing to events and triggering them.
  */
 export class Observable<T = any> {
@@ -47,12 +48,13 @@ export class Observable<T = any> {
      */
     readonly max: number;
 
+    /**
+     * Internal list of subscribers.
+     */
     protected _subs: ISubscriber<T>[] = [];
 
     /**
-     * @constructor
-     *
-     * @param {IObservableOptions} [options]
+     * @param [options]
      * Configuration Options.
      */
     constructor(options?: IObservableOptions) {
@@ -62,10 +64,10 @@ export class Observable<T = any> {
     /**
      * Subscribes for receiving all data events.
      *
-     * @param {SubFunction} cb
+     * @param cb
      * Data notification callback function.
      *
-     * @returns {Subscription}
+     * @returns
      * Object for unsubscribing safely.
      */
     public subscribe(cb: SubFunction<T>): Subscription {
@@ -77,15 +79,15 @@ export class Observable<T = any> {
     /**
      * Asynchronous data broadcast to all subscribers.
      *
-     * @param {} data
+     * @param data
      * Data to be sent, according to the type template.
      *
-     * @param {Function} [cb]
+     * @param [cb]
      * Optional callback function to be notified when the last recipient has received the data.
      * The function takes one parameter - total number of clients that received the data.
      * Note that asynchronous subscribers me still be processing the data at this point.
      *
-     * @returns {number}
+     * @returns
      * Number of clients that will be receiving the data.
      */
     public next(data: T, cb?: (count: number) => void): number {
@@ -105,13 +107,13 @@ export class Observable<T = any> {
      * Errors from subscription callbacks are passed into the callback function,
      * which handles both synchronous and asynchronous subscription functions.
      *
-     * @param {} data
+     * @param data
      * Data to be sent, according to the type template.
      *
-     * @param {Function} onError
+     * @param onError
      * Callback for handling errors from subscribers.
      *
-     * @returns {number}
+     * @returns
      * Number of clients that will be receiving the data.
      */
     public nextSafe(data: T, onError: (err: any) => void): number {
@@ -132,10 +134,10 @@ export class Observable<T = any> {
     /**
      * Synchronous data broadcast to all subscribers.
      *
-     * @param {} data
+     * @param data
      * Data to be sent, according to the type template.
      *
-     * @returns {number}
+     * @returns
      * Number of clients that have received the data.
      *
      * Note that asynchronous subscribers me still be processing the data.
@@ -173,12 +175,12 @@ export class Observable<T = any> {
     }
 
     /**
-     * Creates unsubscribe callback function for the `Subscription` class.
+     * Creates unsubscribe callback function for the [[Subscription]] class.
      *
-     * @param {ISubscriber} sub
+     * @param sub
      * Subscriber details.
      *
-     * @returns {Function}
+     * @returns
      * Function that implements the unsubscribe request.
      */
     protected _createUnsub(sub: ISubscriber<T>): () => void {
@@ -190,7 +192,7 @@ export class Observable<T = any> {
     /**
      * Removes an existing subscriber from the list.
      *
-     * @param {ISubscriber} sub
+     * @param sub
      * Subscriber to be removed, which must be on the list.
      */
     protected _removeSub(sub: ISubscriber<T>) {

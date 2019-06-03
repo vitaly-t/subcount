@@ -1,11 +1,13 @@
 /**
- * @class Subscription
- * @description
+ * @class
  * Represents result of subscribing to an observable object, to provide a safe way to unsubscribe.
  */
 export class Subscription {
     private _unsub: () => void;
 
+    /**
+     * @hidden
+     */
     constructor(unsub: () => void, sub: { cancel: () => void }) {
         this._unsub = unsub;
         sub.cancel = () => {
@@ -25,7 +27,7 @@ export class Subscription {
     }
 
     /**
-     * Unsubscribes a live subscription from the observable.
+     * Unsubscribes from the observable.
      */
     public unsubscribe(): void {
         if (this._unsub) {
