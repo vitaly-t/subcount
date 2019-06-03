@@ -85,7 +85,7 @@ export class Observable<T = any> {
      * @param cb
      * Optional callback function to be notified when the last recipient has received the data.
      * The function takes one parameter - total number of clients that received the data.
-     * Note that asynchronous subscribers me still be processing the data at this point.
+     * Note that asynchronous subscribers may still be processing the data at this point.
      *
      * @returns
      * Number of clients that will be receiving the data.
@@ -140,7 +140,7 @@ export class Observable<T = any> {
      * @returns
      * Number of clients that have received the data.
      *
-     * Note that asynchronous subscribers me still be processing the data.
+     * Note that asynchronous subscribers may still be processing the data.
      */
     public nextSync(data: T): number {
         const r = this._getRecipients();
