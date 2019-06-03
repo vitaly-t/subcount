@@ -929,6 +929,9 @@ img { max-width: 100%; }
 					<a href="observable.html#_createunsub" class="tsd-kind-icon">_create<wbr>Unsub</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<a href="observable.html#_getrecipients" class="tsd-kind-icon">_get<wbr>Recipients</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
 					<a href="observable.html#_removesub" class="tsd-kind-icon">_remove<wbr>Sub</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class">
@@ -1021,6 +1024,7 @@ img { max-width: 100%; }
 						<h3>Methods</h3>
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="observable.html#_createunsub" class="tsd-kind-icon">_create<wbr>Unsub</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="observable.html#_getrecipients" class="tsd-kind-icon">_get<wbr>Recipients</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="observable.html#_removesub" class="tsd-kind-icon">_remove<wbr>Sub</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="observable.html#next" class="tsd-kind-icon">next</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="observable.html#nextsafe" class="tsd-kind-icon">next<wbr>Safe</a></li>
@@ -1160,6 +1164,30 @@ img { max-width: 100%; }
 								</ul>
 							</li>
 						</ul>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+				<a name="_getrecipients" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagProtected">Protected</span> _get<wbr>Recipients</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<li class="tsd-signature tsd-kind-icon">_get<wbr>Recipients<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ISubscriber</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/a7fb9ea/src/observable.ts#L172">src/observable.ts:172</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Gets all recipients that must receive data.</p>
+							</div>
+							<p>It returns a copy of subscribers array for safe iteration, while applying the
+							maximum limit when it is set with the <code>max</code> option.</p>
+						</div>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ISubscriber</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h4>
 					</li>
 				</ul>
 			</section>
