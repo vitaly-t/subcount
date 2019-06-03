@@ -96,8 +96,8 @@ fromEvent(document, 'click').subscribe((e: Event) => {
 });
 ```
 
-See also - [the source code](./src), which is very small and well documented.
+See also: [API generated from code](https://vitaly-t.github.io/subcount).
 
 [RXJS]:https://github.com/reactivex/rxjs
-[Observable]:https://github.com/vitaly-t/subcount/blob/master/src/observable.ts
-[CountedObservable]:https://github.com/vitaly-t/subcount/blob/master/src/counted.ts
+[Observable]:https://vitaly-t.github.io/subcount/classes/observable.html
+[CountedObservable]:https://vitaly-t.github.io/subcount/classes/countedobservable.html

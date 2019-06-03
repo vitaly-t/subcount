@@ -20,6 +20,7 @@
     "excludeExternals": true,
     "excludePrivate": true,
     "excludeNotExported": true,
+    "disableOutputCheck": true,
     "mode": "file",
     "out": "docs",
     "theme": "minimal"
