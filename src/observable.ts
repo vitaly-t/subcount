@@ -92,7 +92,7 @@ export class Observable<T = any> {
      */
     public next(data: T, cb?: (count: number) => void): number {
         const r = this._getRecipients();
-        r.forEach((sub, index) => nextCall(() => {
+        r.forEach((sub, index) => Observable._nextCall(() => {
             sub.cb(data);
             if (index === r.length - 1 && typeof cb === 'function') {
                 cb(r.length); // finished sending
@@ -118,7 +118,7 @@ export class Observable<T = any> {
      */
     public nextSafe(data: T, onError: (err: any) => void): number {
         const r = this._getRecipients();
-        r.forEach(sub => nextCall(() => {
+        r.forEach(sub => Observable._nextCall(() => {
             try {
                 const res = sub.cb(data);
                 if (res && typeof res.catch === 'function') {
@@ -167,7 +167,7 @@ export class Observable<T = any> {
      * Gets all recipients that must receive data.
      *
      * It returns a copy of subscribers array for safe iteration, while applying the
-     * maximum limit when it is set with the `max` option.
+     * maximum limit when it is set with the [[max]] option.
      */
     protected _getRecipients(): ISubscriber<T>[] {
         const end = this.max ? this.max : this._subs.length;
@@ -181,7 +181,7 @@ export class Observable<T = any> {
      * Subscriber details.
      *
      * @returns
-     * Function that implements the `unsubscribe` request.
+     * Function that implements the [[unsubscribe]] request.
      */
     protected _createUnsub(sub: ISubscriber<T>): () => void {
         return () => {
@@ -200,7 +200,9 @@ export class Observable<T = any> {
         this._subs[idx].cancel();
         this._subs.splice(idx, 1);
     }
-}
 
-// for compatibility with web browsers:
-const nextCall = typeof process === 'undefined' ? setTimeout : process.nextTick;
+    /**
+     * For compatibility with web browsers.
+     */
+    protected static _nextCall = typeof process === 'undefined' ? setTimeout : process.nextTick;
+}

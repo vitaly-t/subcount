@@ -3,7 +3,7 @@ import {IObservableOptions, ISubscriber, Observable} from './observable';
 /**
  * @interface ISubCounts
  * @description
- * Type used with [[onCount]] event.
+ * Represents a change in the number of subscribers, as used with [[onCount]] event.
  */
 export interface ISubCounts {
     /**
