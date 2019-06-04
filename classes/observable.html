@@ -922,6 +922,9 @@ img { max-width: 100%; }
 				<li class=" tsd-kind-property tsd-parent-kind-class">
 					<a href="observable.html#max" class="tsd-kind-icon">max</a>
 				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected tsd-is-static">
+					<a href="observable.html#_nextcall" class="tsd-kind-icon">_next<wbr>Call</a>
+				</li>
 				<li class=" tsd-kind-get-signature tsd-parent-kind-class">
 					<a href="observable.html#count" class="tsd-kind-icon">count</a>
 				</li>
@@ -1012,6 +1015,7 @@ img { max-width: 100%; }
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="observable.html#_subs" class="tsd-kind-icon">_subs</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="observable.html#max" class="tsd-kind-icon">max</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected tsd-is-static"><a href="observable.html#_nextcall" class="tsd-kind-icon">_next<wbr>Call</a></li>
 						</ul>
 					</section>
 					<section class="tsd-index-section ">
@@ -1048,7 +1052,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/a7fb9ea/src/observable.ts#L54">src/observable.ts:54</a></li>
+								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/57b12b7/src/observable.ts#L54">src/observable.ts:54</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1077,7 +1081,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">_subs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ISubscriber</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/a7fb9ea/src/observable.ts#L54">src/observable.ts:54</a></li>
+						<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/57b12b7/src/observable.ts#L54">src/observable.ts:54</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1092,13 +1096,28 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">max<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/a7fb9ea/src/observable.ts#L49">src/observable.ts:49</a></li>
+						<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/57b12b7/src/observable.ts#L49">src/observable.ts:49</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
 						<p>Maximum number of subscribers that can receive data.
 						0 = <code>no limit applies</code>.</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected tsd-is-static">
+				<a name="_nextcall" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagProtected">Protected</span> _next<wbr>Call</h3>
+				<div class="tsd-signature tsd-kind-icon">_next<wbr>Call<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">nextTick</span><span class="tsd-signature-symbol"> =&nbsp;typeof process &#x3D;&#x3D;&#x3D; &#x27;undefined&#x27; ? setTimeout : process.nextTick</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/57b12b7/src/observable.ts#L207">src/observable.ts:207</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>For compatibility with web browsers.</p>
 					</div>
 				</div>
 			</section>
@@ -1111,7 +1130,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">count<span class="tsd-signature-symbol">:</span> </div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/a7fb9ea/src/observable.ts#L154">src/observable.ts:154</a></li>
+						<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/57b12b7/src/observable.ts#L154">src/observable.ts:154</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1133,7 +1152,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/a7fb9ea/src/observable.ts#L186">src/observable.ts:186</a></li>
+								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/57b12b7/src/observable.ts#L186">src/observable.ts:186</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1151,7 +1170,7 @@ img { max-width: 100%; }
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
-						<p>Function that implements the <code>unsubscribe</code> request.</p>
+						<p>Function that implements the <a href="subscription.html#unsubscribe">unsubscribe</a> request.</p>
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-siganture">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
@@ -1177,7 +1196,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/a7fb9ea/src/observable.ts#L172">src/observable.ts:172</a></li>
+								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/57b12b7/src/observable.ts#L172">src/observable.ts:172</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1185,7 +1204,7 @@ img { max-width: 100%; }
 								<p>Gets all recipients that must receive data.</p>
 							</div>
 							<p>It returns a copy of subscribers array for safe iteration, while applying the
-							maximum limit when it is set with the <code>max</code> option.</p>
+							maximum limit when it is set with the <a href="observable.html#max">max</a> option.</p>
 						</div>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ISubscriber</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h4>
 					</li>
@@ -1201,7 +1220,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/a7fb9ea/src/observable.ts#L198">src/observable.ts:198</a></li>
+								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/57b12b7/src/observable.ts#L198">src/observable.ts:198</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1232,7 +1251,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/a7fb9ea/src/observable.ts#L93">src/observable.ts:93</a></li>
+								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/57b12b7/src/observable.ts#L93">src/observable.ts:93</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1290,7 +1309,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/a7fb9ea/src/observable.ts#L119">src/observable.ts:119</a></li>
+								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/57b12b7/src/observable.ts#L119">src/observable.ts:119</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1348,7 +1367,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/a7fb9ea/src/observable.ts#L145">src/observable.ts:145</a></li>
+								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/57b12b7/src/observable.ts#L145">src/observable.ts:145</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1381,7 +1400,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/a7fb9ea/src/observable.ts#L73">src/observable.ts:73</a></li>
+								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/57b12b7/src/observable.ts#L73">src/observable.ts:73</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1413,7 +1432,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/a7fb9ea/src/observable.ts#L161">src/observable.ts:161</a></li>
+								<li>Defined in <a href="https://github.com/vitaly-t/subcount/blob/57b12b7/src/observable.ts#L161">src/observable.ts:161</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
