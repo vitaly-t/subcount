@@ -28,12 +28,18 @@ export class Subscription {
 
     /**
      * Unsubscribes from the observable.
+     *
+     * @returns
+     * - `true` - subscription has been successfully cancelled
+     * - `false` - nothing happened, as subscription wasn't live
      */
-    public unsubscribe(): void {
+    public unsubscribe(): boolean {
         if (this._unsub) {
             this._unsub();
             this._unsub = null; // to protect from repeated calls
+            return true;
         }
+        return false;
     }
 
 }
