@@ -4,6 +4,6 @@
 
 Observable events in TypeScript, with monitored subscriptions.
 
-**Depreciated, in favour of [sub-events], which can do all the same, and more.**
+**DEPRECATED by [sub-events].**
 
 [sub-events]:https://github.com/vitaly-t/sub-events
